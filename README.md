@@ -1,39 +1,64 @@
 # meridian-base
 
-Non-opinionated core agents and skills for Meridian. Teaches the harness how to use meridian — spawning, orchestrating, work coordination, install management, and troubleshooting.
+Core coordination primitives for [Meridian](https://github.com/haowjy/meridian-channel).
+This is what turns a bare `meridian` install into an orchestration system —
+the orchestrator agent, the default subagent, and the skills that teach them
+how to spawn work, track state, and coordinate across sessions.
 
-This is what Meridian bootstraps by default.
+Meridian auto-bootstraps these agents when they're missing. You don't need to
+install this repo explicitly unless you want the full set of skills (session
+context mining, troubleshooting, install management).
 
-## Layout
+## What You Get
 
-- `agents/*.md` — installable agent profiles
-- `skills/*/SKILL.md` — installable skills (with optional `resources/`)
+An orchestrator that can do this out of the box:
 
-Meridian discovers this repo by layout convention. No source manifest is required inside the repo itself.
+```bash
+# Break work into subtasks and delegate
+meridian spawn -m codex -p "Implement the data model" -f plan/phase-1.md
 
-## Contents
+# Run tasks in parallel
+meridian spawn -m codex -p "Phase 2a: API endpoints"
+meridian spawn -m codex -p "Phase 2b: CLI handlers"
+meridian spawn wait p2 p3
 
-### Agents (2)
+# Track work items across sessions
+meridian work start "auth-refactor"
+meridian work update --status implementing
+
+# Search past context
+meridian session search "auth design decision"
+meridian report search "token expiry"
+```
+
+These capabilities come from the skills below — they're injected into the
+orchestrator's system prompt so the agent knows how to use meridian's CLI.
+
+## Agents
 
 | Agent | Model | Purpose |
 |---|---|---|
-| `__meridian-orchestrator` | (default) | Multi-step orchestrator with work coordination |
-| `__meridian-subagent` | gpt-5.3-codex | Default execution agent for scoped tasks |
+| `__meridian-orchestrator` | (configured default) | Plans, delegates, and evaluates subagent work. Loaded with coordination skills. |
+| `__meridian-subagent` | gpt-5.3-codex | Default execution agent for scoped tasks. Receives a prompt, does the work, reports back. |
 
-### Skills (6)
+## Skills
 
-| Skill | Purpose |
+| Skill | What it teaches the agent |
 |---|---|
-| `__meridian-orchestrate` | Supervisor methodology — planning, delegation, review cycles, model selection |
-| `__meridian-spawn-agent` | CLI reference for `meridian spawn`, work items, parallel execution |
-| `__meridian-session-context` | Session context mining — reading transcripts, searching decisions, discovering sessions per work item |
-| `__meridian-work-coordination` | Work item lifecycle, artifact placement, status management |
-| `__meridian-install` | Managed install system — syncing agents/skills from external sources |
-| `__meridian-troubleshoot` | Diagnostics, common failure patterns, state recovery |
+| `__meridian-orchestrate` | How to break work into subtasks, pick models, run review cycles, and iterate |
+| `__meridian-spawn-agent` | The `meridian spawn` CLI — launching, waiting, parallel execution, reading reports |
+| `__meridian-work-coordination` | Work item lifecycle — creating, switching, updating status, placing artifacts |
+| `__meridian-session-context` | Mining past sessions — reading transcripts, searching decisions, finding related work |
+| `__meridian-install` | Managing agent/skill sources — installing, updating, resolving dependencies |
+| `__meridian-troubleshoot` | Diagnosing problems — failed spawns, corrupt state, harness issues |
 
 ## Bootstrap
 
-Meridian auto-installs `__meridian-orchestrator` and `__meridian-subagent` (plus their skill dependencies) when they're missing locally. This repo is the well-known bootstrap source — if no other provenance is found, Meridian adds it to `agents.toml` automatically.
+Meridian auto-installs the orchestrator, subagent, and their skill dependencies
+when they're missing locally. This repo is the well-known bootstrap source — if
+no provenance is found, Meridian adds it to `agents.toml` automatically.
+
+You never need to think about this unless you're debugging install issues.
 
 ## Install
 
@@ -42,7 +67,16 @@ meridian sources add @haowjy/meridian-base
 meridian sources install
 ```
 
+## Layout
+
+```
+agents/*.md              # Agent profiles (YAML frontmatter + markdown)
+skills/*/SKILL.md        # Skills (with optional resources/ subdirectory)
+```
+
+Meridian discovers these by layout convention — no manifest needed.
+
 ## See Also
 
 - [meridian-channel](https://github.com/haowjy/meridian-channel) — the Meridian coordination engine
-- [meridian-dev-workflow](https://github.com/haowjy/meridian-dev-workflow) — opinionated SDLC methodology built on top of this base
+- [meridian-dev-workflow](https://github.com/haowjy/meridian-dev-workflow) — opinionated dev team built on top of this base
