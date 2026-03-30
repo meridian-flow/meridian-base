@@ -39,11 +39,14 @@ meridian spawn show SPAWN_ID --include-files  # include file metadata
 
 ## Reports
 
-Reports are returned automatically — both with foreground execution and `spawn wait`. To inspect or search past reports:
+Foreground `spawn` and `spawn wait` return status only. Use `spawn show` (report included by default) or `spawn report` subcommands for report management:
 
 ```bash
+# View status + report together
+meridian spawn show SPAWN_ID
+
 # View a spawn's report
-meridian spawn report show SPAWN_ID
+meridian spawn report show --spawn SPAWN_ID
 
 # Search across all spawn reports by text
 meridian spawn report search "auth refactor" --limit 10
@@ -85,7 +88,7 @@ meridian spawn --background -a agent -p "task description"
 # → returns immediately: {"spawn_id": "p107", "status": "running"}
 
 meridian spawn wait p107
-# → blocks until done, returns status + full report
+# → blocks until done, returns terminal status only
 
 # Multiple spawns in parallel
 meridian spawn --background -a agent -p "Step A" --desc "Step A"

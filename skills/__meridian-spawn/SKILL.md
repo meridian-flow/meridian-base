@@ -15,15 +15,15 @@ In agent mode, all CLI output is JSON.
 
 ## Core Loop
 
-Spawns run in **foreground** (blocking) by default — the command blocks until the spawn completes and returns the full result including the report. Use your harness's background execution to avoid blocking yourself:
+Spawns run in **foreground** (blocking) by default — the command blocks until the spawn completes and returns status only (`spawn_id`, `status`, `duration`). Use your harness's background execution to avoid blocking yourself:
 
 ```bash
 # Run via your harness's background feature (e.g., Bash run_in_background, parallel tool calls)
 meridian spawn -a agent -p "task description"
-# → harness notifies you when done, result includes status + full report
+# → harness notifies you when done, result includes spawn_id + status
 ```
 
-Your harness handles the notification — no need to poll or wait. Use `spawn show` if you need to re-inspect a past spawn's details.
+Your harness handles the notification — no need to poll or wait. Use `spawn show` to read report content.
 
 ## Spawning
 
@@ -88,7 +88,7 @@ Stuck spawns auto-recover: if a spawn's process dies or goes stale, the next rea
 
 ## When a Spawn Fails
 
-If `spawn wait` returns `"status": "failed"`, check the `report` field first — it usually contains the error or the agent's last output. For deeper investigation, use `spawn show SPAWN_ID` and see [`resources/debugging.md`](resources/debugging.md) for log inspection.
+If `spawn wait` returns `"status": "failed"`, read the report via `spawn show SPAWN_ID` first — it usually contains the error or the agent's last output. For deeper investigation, see [`resources/debugging.md`](resources/debugging.md) for log inspection.
 
 ## Shared Filesystem
 
