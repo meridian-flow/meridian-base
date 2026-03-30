@@ -45,12 +45,12 @@ orchestrator's system prompt so the agent knows how to use meridian's CLI.
 
 | Skill | What it teaches the agent |
 |---|---|
-| `__meridian-orchestrate` | How to break work into subtasks, pick models, run review cycles, and iterate |
-| `__meridian-spawn-agent` | The `meridian spawn` CLI — launching, waiting, parallel execution, reading reports |
+| `__meridian-orchestration` | How to break work into subtasks, pick models, run review cycles, and iterate |
+| `__meridian-spawn` | The `meridian spawn` CLI — launching, waiting, parallel execution, reading reports |
 | `__meridian-work-coordination` | Work item lifecycle — creating, switching, updating status, placing artifacts |
 | `__meridian-session-context` | Mining past sessions — reading transcripts, searching decisions, finding related work |
 | `__meridian-install` | Managing agent/skill sources — installing, updating, resolving dependencies |
-| `__meridian-troubleshoot` | Diagnosing problems — failed spawns, corrupt state, harness issues |
+| `__meridian-diagnostics` | Diagnosing problems — failed spawns, corrupt state, harness issues |
 
 ## Bootstrap
 
