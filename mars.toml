@@ -1,4 +1,4 @@
 [package]
 name = "meridian-base"
-version = "0.0.1"
+version = "0.0.2"
 description = "Core coordination primitives for Meridian — orchestrator, subagent, and skills for spawning, state tracking, and session context."
