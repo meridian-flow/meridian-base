@@ -5,9 +5,7 @@ This is what turns a bare `meridian` install into an orchestration system —
 the orchestrator agent, the default subagent, and the skills that teach them
 how to spawn work, track state, and coordinate across sessions.
 
-Meridian auto-bootstraps these agents when they're missing. You don't need to
-install this repo explicitly unless you want the full set of skills (session
-context mining, troubleshooting, install management).
+Use this package to populate `.agents/` in projects that run Meridian.
 
 ## What You Get
 
@@ -48,21 +46,18 @@ orchestrator's system prompt so the agent knows how to use meridian's CLI.
 | `__meridian-spawn` | The `meridian spawn` CLI — launching, waiting, parallel execution, reading reports |
 | `__meridian-work-coordination` | Work item lifecycle — creating, switching, updating status, placing artifacts |
 | `__meridian-session-context` | Mining past sessions — reading transcripts, searching decisions, finding related work |
-| `__mars` | Agent package management via the `mars` CLI — installing, syncing, linking, validating |
+| `__mars` | Agent package management via `meridian mars ...` — adding, syncing, linking, validating |
 | `__meridian-diagnostics` | Diagnosing problems — failed spawns, corrupt state, harness issues |
 
-## Bootstrap
-
-Meridian auto-installs the orchestrator, subagent, and their skill dependencies
-when they're missing locally. This repo is the well-known bootstrap source.
-
-You never need to think about this unless you're debugging install issues.
-
-## Install
+## Install Into a Project
 
 ```bash
-mars add haowjy/meridian-base
+meridian mars init
+meridian mars add @haowjy/meridian-base
+meridian mars sync
 ```
+
+If `mars.toml` already exists, you can skip `meridian mars init`.
 
 ## Layout
 
