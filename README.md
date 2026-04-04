@@ -15,10 +15,9 @@ An orchestrator that can do this out of the box:
 # Break work into subtasks and delegate
 meridian spawn -m codex -p "Implement the data model" -f plan/phase-1.md
 
-# Run tasks in parallel
+# Run tasks in parallel (each blocks until done; harness runs them concurrently)
 meridian spawn -m codex -p "Phase 2a: API endpoints"
 meridian spawn -m codex -p "Phase 2b: CLI handlers"
-meridian spawn wait p2 p3
 
 # Track work items across sessions
 meridian work start "auth-refactor"
