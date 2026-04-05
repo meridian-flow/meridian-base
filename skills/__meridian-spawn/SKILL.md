@@ -53,9 +53,19 @@ meridian spawn -a agent -p "Implement fix" \
   -f src/module.py
 ```
 
-Run `meridian models list` to see available models and aliases. Run `mars list` to see available agent profiles and skills — useful when your harness doesn't show agents natively. Model and agent preferences belong in your project's agent profiles, `meridian config`, or project docs (CLAUDE.md, AGENTS.md) — hardcoding them into spawn commands makes them invisible to `meridian config show`, impossible to change project-wide, and silently divergent from profile defaults.
+Run `meridian models list` to see available models with their strengths and cost tiers. Run `meridian mars models -h` for the full model management surface. Run `mars list` to see available agent profiles and skills. Model and agent preferences belong in your project's agent profiles, `meridian config`, or project docs (CLAUDE.md, AGENTS.md) — hardcoding them into spawn commands makes them invisible to `meridian config show`, impossible to change project-wide, and silently divergent from profile defaults.
 
 To create your own agent profiles, see [`resources/creating-agents.md`](resources/creating-agents.md).
+
+## Model Selection
+
+Agent profiles already set the right model for the role. Use `-m` to override when fanning out — spawning the same role multiple times with different models to get independent perspectives and clear each other's blind spots.
+
+**Every model family has blind spots.** Models from the same family (same provider, same training lineage) tend to share the same weaknesses. Code written by one model in a family will often look correct to another model in the same family, because they learned from similar data and make similar assumptions. This is why review that only uses one model family gives false confidence.
+
+**Fan out across model families.** When multiple spawns examine the same work — reviews, verification, adversarial testing — use different model families so their blind spots don't overlap. One family should adversarially check another's output. If a finding surfaces independently from two different families, it's almost certainly real. If only one family flags it, it's still worth investigating but may reflect that family's bias.
+
+**Match model strengths to the task.** Check `meridian models list` — models with descriptions indicate what they're best at. Implementation tasks need models that are faithful to specs and fast. Review tasks need models with strong reasoning and judgment. Exploration and triage can use cheaper, faster models.
 
 ## Work Items
 
