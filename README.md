@@ -1,6 +1,6 @@
 # meridian-base
 
-Core coordination primitives for [Meridian](https://github.com/haowjy/meridian-channel).
+Core coordination primitives for [Meridian](https://github.com/meridian-flow/meridian-cli).
 This is what turns a bare `meridian` install into an orchestration system —
 the orchestrator agent, the default subagent, and the skills that teach them
 how to spawn work, track state, and coordinate across sessions.
@@ -50,7 +50,7 @@ orchestrator's system prompt so the agent knows how to use meridian's CLI.
 
 ```bash
 meridian mars init
-meridian mars add @haowjy/meridian-base
+meridian mars add @meridian-flow/meridian-base
 meridian mars sync
 ```
 
@@ -67,5 +67,5 @@ Meridian discovers these by layout convention — no manifest needed.
 
 ## See Also
 
-- [meridian-channel](https://github.com/haowjy/meridian-channel) — the Meridian coordination engine
-- [meridian-dev-workflow](https://github.com/haowjy/meridian-dev-workflow) — opinionated dev team built on top of this base
+- [meridian-cli](https://github.com/meridian-flow/meridian-cli) — the Meridian coordination engine
+- [meridian-dev-workflow](https://github.com/meridian-flow/meridian-dev-workflow) — opinionated dev team built on top of this base
