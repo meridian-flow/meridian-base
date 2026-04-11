@@ -4,6 +4,11 @@ Caveman style. Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [0.0.14] - 2026-04-10
+
+### Fixed
+- `meridian-cli/resources/mars-toml-reference.md`: "Item Filtering" section claimed `agents`/`skills` and `exclude` could combine ("Both: `agents`/`skills` defines the set, `exclude` removes from it"). Wrong — per mars source, `FilterConfig::to_mode()` makes filter modes mutually exclusive. When both are set, `exclude` is silently dropped. Rewrote the section to document the actual precedence order and the mutual-exclusion rule. Sent an agent down a rabbit hole this session (see `meridian-dev-workflow/CHANGELOG.md` `0.0.16` entry).
+
 ## [0.0.13] - 2026-04-10
 
 ### Added
