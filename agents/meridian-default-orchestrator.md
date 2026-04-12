@@ -10,6 +10,7 @@ skills:
   - meridian-spawn
   - meridian-work-coordination
   - meridian-privilege-escalation
+  - shared-workspace
 tools: [Bash, Write, Edit, WebSearch, WebFetch]
 disallowed-tools: [Agent]
 sandbox: danger-full-access

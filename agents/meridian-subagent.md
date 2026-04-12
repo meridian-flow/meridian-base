@@ -5,7 +5,7 @@ description: >
   `meridian spawn -a meridian-subagent`, passing task files with -f.
   Executes the described task directly and reports results.
 model: codex
-skills: []
+skills: [shared-workspace]
 tools: [Bash, Write, Edit]
 sandbox: workspace-write
 ---
