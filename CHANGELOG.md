@@ -4,6 +4,9 @@ Caveman style. Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### Changed
+- `agent-creator` and `skill-creator`: "dial back aggressive language" guidance now more precise. Prefer ordinary framing by default, but keep load-bearing negatives when they carry a real boundary with reasoning. Warn against blind rewrite sweeps that strip every `must`/`never`.
+
 ## [0.0.14] - 2026-04-10
 
 ### Fixed

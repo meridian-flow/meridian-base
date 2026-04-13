@@ -154,12 +154,28 @@ lands at the right altitude.
 
 ### 4. Dial back aggressive language
 
-Avoid ALL CAPS, "CRITICAL", "you MUST", "NEVER". Aggressive language was a
-reasonable defense against undertriggering on older models; on current
-models it pushes toward brittle, literal compliance and overtriggering —
-the instruction fires in contexts where it doesn't make sense. As models
-keep getting more responsive to system prompts, the threshold for this
-overtriggering drops. Use ordinary language. "Use `meridian spawn` to
+Default to ordinary, positive framing when writing new prompts. Avoid
+shouty markers like ALL CAPS or "CRITICAL" unless they're genuinely doing
+work. Aggressive language was a reasonable defense against undertriggering
+on older models; on current models it pushes toward brittle, literal
+compliance and overtriggering — the instruction fires in contexts where it
+doesn't make sense. As models keep getting more responsive to system
+prompts, the threshold for this overtriggering keeps dropping.
+
+This guidance is for writing, not for blindly rewriting. Don't run sweep
+passes that strip every "never" or "must" from existing prompts.
+Evaluate each line in context.
+
+Use a belt-and-suspenders vs load-bearing test when editing:
+
+- If a negative restates something the prompt already constrains
+  positively, it's usually redundant and can be removed.
+- If the negative is the actual boundary, keep it, and keep the reasoning
+  attached. Example that earns its place: "Never write code or edit source
+  files directly — dropping into implementation compromises your
+  orchestration altitude."
+
+Reasoning is what makes firm language robust. "Use `meridian spawn` to
 delegate work; the built-in Agent tool bypasses meridian's state tracking"
 is firmer in practice than "YOU MUST NEVER USE THE AGENT TOOL."
 
