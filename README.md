@@ -52,6 +52,7 @@ orchestrator's system prompt so the agent knows how to use meridian's CLI.
 meridian mars init
 meridian mars add @meridian-flow/meridian-base
 meridian mars sync
+meridian config set primary.agent meridian-default-orchestrator
 ```
 
 If `mars.toml` already exists, you can skip `meridian mars init`.

@@ -1,6 +1,9 @@
 # Configuration
 
-Meridian configuration controls defaults for models, agents, and timeouts. Project config lives in `.meridian/config.toml`, and resolved values can also come from env vars, agent profile defaults, and CLI flags.
+Meridian configuration controls defaults for models, agents, and timeouts.
+Project config lives in `meridian.toml`; user config lives in
+`~/.meridian/config.toml`. Resolved values can also come from env vars, agent
+profile defaults, and CLI flags.
 
 ## Quick Reference
 
@@ -60,7 +63,7 @@ Settings under the `primary.*` namespace apply to `meridian` primary sessions (t
 ## Config File Format
 
 ```toml
-# .meridian/config.toml
+# meridian.toml
 
 [defaults]
 model = "gpt-5.4"
@@ -79,7 +82,7 @@ Per-field precedence (later wins):
 
 1. Builtin defaults (hardcoded)
 2. User config (`~/.meridian/config.toml`)
-3. Project config (`.meridian/config.toml`)
+3. Project config (`meridian.toml`)
 4. Agent profile YAML
 5. Environment variables (`MERIDIAN_*`)
 6. CLI flags (`-m`, `-a`, `--timeout`, etc.)
