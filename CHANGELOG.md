@@ -4,6 +4,11 @@ Caveman style. Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [0.0.18] - 2026-04-17
+
+### Changed
+- `@meridian-default-orchestrator` and `@meridian-subagent`: comprehensive `disallowed-tools` hardening. Block `ScheduleWakeup`, `Cron*`, `PushNotification`, `RemoteTrigger`, `EnterPlanMode`, `ExitPlanMode`, `EnterWorktree`, `ExitWorktree`, `NotebookEdit`. Keep `LSP` and `Monitor` available. Orchestrator keeps `Task*` and `AskUserQuestion`.
+
 ## [0.0.17] - 2026-04-16
 
 ### Changed
