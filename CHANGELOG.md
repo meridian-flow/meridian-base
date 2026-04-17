@@ -4,6 +4,11 @@ Caveman style. Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [0.0.19] - 2026-04-17
+
+### Added
+- `shared-workspace` skill: moved from `meridian-dev-workflow`. Multi-agent safety for shared repos — orientation on active work, rules for not destroying other actors' uncommitted changes, staging discipline. Base agents and dev-workflow agents both need it.
+
 ## [0.0.18] - 2026-04-17
 
 ### Changed
