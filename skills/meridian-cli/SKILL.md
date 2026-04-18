@@ -18,6 +18,7 @@ State on disk is the source of truth. If it is not visible in `.meridian/` files
 | `meridian spawn` | Create, wait, list, show, log, cancel, stats, reports for subagent runs | `meridian spawn --help` |
 | `meridian work` | Work item lifecycle, dashboard, session listing | `meridian work --help` |
 | `meridian session` | Read and search harness session transcripts | `meridian session --help` |
+| `meridian context` | Resolved filesystem context (work_dir, fs_dir, repo_root, state_root, depth, context_roots) | `meridian context --help` |
 | `meridian models` | Model catalog and routing guidance | `meridian models list` |
 | `meridian config` | Resolved config inspection and overrides | `meridian config --help` |
 | `meridian doctor` | Health check and orphan reconciliation | `meridian doctor --help` |
@@ -39,44 +40,11 @@ State on disk is the source of truth. If it is not visible in `.meridian/` files
 
 **Spawn lifecycle.** Spawns transition `queued` → `running` → `finalizing` → `succeeded | failed | cancelled`. `finalizing` is a transient post-exit state where the runner is finishing report extraction and state persistence; treat it as active (not terminal) when polling. `spawn wait` blocks through `finalizing` and only returns on a terminal state. Reconciliation on read paths moves an abandoned `finalizing` record to `failed` with `orphan_finalization` when no recent activity is seen.
 
-## 4. Mars in One Section
+## 4. Diagnostics
 
-Mars materializes `.agents/` from sources declared in `mars.toml`, and `meridian mars ...` is the bundled entrypoint. `mars.toml` is the committed source manifest, `mars.lock` is committed generated state, and `mars.local.toml` is local override state. Drift and integrity checks live in `meridian mars list --status` and `meridian mars doctor`. Do not edit `.agents/` directly; regenerate it with `meridian mars sync`.
+`orphan_run` is common — runner died mid-flight. Check `meridian session log <spawn_id>` to see what happened, then relaunch. For other failure modes, see [`resources/debugging.md`](resources/debugging.md).
 
-For full command coverage, use `meridian mars --help`. For the full `mars.toml` schema reference, see [`resources/mars-toml-reference.md`](resources/mars-toml-reference.md).
-
-## 5. Diagnostics
-
-### Common Failure Modes
-
-| Symptom | Likely cause | First move |
-|---|---|---|
-| `orphan_run` | Runner process died while `running` without ever reaching `finalizing` | Relaunch after read-path reconciliation updates the record; no report will be present |
-| `orphan_finalization` | Runner reached `finalizing` but was abandoned before writing terminal state | Check `spawn show` — `report.md` may still hold useful content the harness produced before exit |
-| `missing_runner_pid` | Runner PID was never recorded (harness crashed before startup stabilized) | Confirm harness binaries are installed and on `$PATH`; relaunch |
-| `missing_spawn_dir` | Crash during launch before spawn artifacts stabilized | Relaunch the spawn |
-| Exit 127 or 2 with empty report | Harness binary missing from `$PATH` | Install or fix PATH for the selected harness |
-| Exit 143 or 137 | Process terminated externally | Check `meridian spawn show <id>` first; if status is `succeeded`, signal hit during cleanup and no retry is needed. Otherwise check host logs for OOM or external kill, then retry |
-| Timeout exit | Runtime budget exceeded | Increase timeout or split task into smaller spawns |
-| Model/API error in `stderr.log` | Model unavailable or API rejected request | Check `meridian models list` and provider credentials |
-
-Use this sequence when diagnosing: `meridian spawn show` -> `meridian spawn log` -> `meridian session log` -> `meridian doctor` -> raw `spawns.jsonl` with `jq` as last resort.
-For deeper state-debugging flows and low-level log inspection, see [`resources/debugging.md`](resources/debugging.md).
-
-### Spawn Artifact Layout
-
-Each spawn writes artifacts under `.meridian/spawns/<spawn_id>/`.
-
-| File | Contents |
-|---|---|
-| `report.md` | Final report when the spawn reached report emission |
-| `output.jsonl` | Raw harness stdout (prefer `meridian spawn log`) |
-| `stderr.log` | Harness stderr, warnings, and errors |
-| `prompt.md` | Prompt materialized for the harness |
-| `harness.pid` | Foreground harness PID file |
-| `heartbeat` | Liveness touch file while spawn is active |
-
-## 6. Sessions
+## 5. Sessions
 
 `meridian session log <ref>` reads a transcript by chat id, spawn id, or harness session id. Segment `-c 0` reads latest compacted segment; increment `-c` to walk older segments. `meridian session search <query> <ref>` searches case-insensitively across segments and returns navigation context.
 
@@ -84,15 +52,25 @@ Each spawn writes artifacts under `.meridian/spawns/<spawn_id>/`.
 
 For flag details, use `meridian session --help` and `meridian work sessions --help`.
 
-## 7. Environment Variables
+## 6. Context Query
+
+`meridian context` is the source of truth for filesystem context. It returns `work_dir`, `fs_dir`, `repo_root`, `state_root`, `depth`, and `context_roots`. Query it and use the literal paths — `work_dir` and `fs_dir` are not projected into environment variables. See `meridian context --help` for flags.
+
+`meridian work current` returns the expanded `work_dir` path (not a work id).
+
+### Environment Variables
 
 | Variable | Purpose |
 |---|---|
 | `MERIDIAN_STATE_ROOT` | Override `.meridian/` location |
 | `MERIDIAN_DEPTH` | Spawn nesting depth (`>0` means inside a spawn) |
-| `MERIDIAN_FS_DIR` | Shared long-lived filesystem directory |
-| `MERIDIAN_WORK_DIR` | Active work-item scratch directory |
 | `MERIDIAN_CHAT_ID` | Inherited parent session id |
+
+## 7. Resources
+
+- [`resources/debugging.md`](resources/debugging.md) — failure modes, artifact layout, log inspection
+- [`resources/configuration.md`](resources/configuration.md) — config keys, precedence, defaults
+- [`resources/mars-toml-reference.md`](resources/mars-toml-reference.md) — full `mars.toml` schema
 
 ## 8. Where to Go Next
 

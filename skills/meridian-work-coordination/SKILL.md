@@ -40,12 +40,14 @@ meridian work delete old-item --force    # remove even if it has artifacts
 
 ## Artifact Placement
 
-**`$MERIDIAN_WORK_DIR`** — scoped to the current work item. Archived when the work completes.
+Query `meridian work current` or `meridian context` for paths. Not in env vars.
 
-**`$MERIDIAN_FS_DIR`** — long-lived reference material. Persists across work items.
+**`work_dir`** — scoped to the current work item. Archived when done.
 
-Rule of thumb: if it helps *this* work item, use `$MERIDIAN_WORK_DIR`. If it helps *any* task understand the project, use `$MERIDIAN_FS_DIR`.
+**`fs_dir`** — long-lived reference material. Persists across work items.
+
+Rule of thumb: *this* work item → `work_dir`. Project-wide → `fs_dir`.
 
 ## Commit Work Artifacts
 
-Agent sessions are ephemeral — compaction, crashes, and context limits erase conversation state. Work artifacts in `$MERIDIAN_WORK_DIR` and `$MERIDIAN_FS_DIR` are the only thing that survives. Commit them to git after creating or updating them so a future agent can resume from artifacts alone. Don't batch until the end — commit as you go so progress is never lost to a mid-session failure.
+Sessions can crash or compact. Work artifacts are the only thing that survives — commit them frequently, not just at the end.

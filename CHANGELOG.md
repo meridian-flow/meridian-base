@@ -4,6 +4,12 @@ Caveman style. Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### Changed
+- Skills trimmed for conciseness — context query model uses `meridian context` / `meridian work current` instead of env vars.
+- `meridian-cli`: diagnostics tables moved to `resources/debugging.md`, Mars section removed (use `--help`), Resources section added, Context Query section trimmed.
+- `meridian-spawn`: inject docs trimmed (1 line), prompt examples simplified.
+- `meridian-work-coordination`: artifact placement updated for context query pattern.
+
 ## [0.0.19] - 2026-04-17
 
 ### Added

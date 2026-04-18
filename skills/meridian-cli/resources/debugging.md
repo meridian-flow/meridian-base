@@ -2,6 +2,32 @@
 
 Read this only when something looks wrong: a spawn seems stuck, expected output is missing, `show` and `wait` disagree with what you expected, or you need to inspect low-level state.
 
+## Common Failure Modes
+
+| Symptom | Likely cause | First move |
+|---|---|---|
+| `orphan_run` | Runner process died while `running` without ever reaching `finalizing` | Relaunch after read-path reconciliation updates the record; no report will be present |
+| `orphan_finalization` | Runner reached `finalizing` but was abandoned before writing terminal state | Check `spawn show` — `report.md` may still hold useful content the harness produced before exit |
+| `missing_runner_pid` | Runner PID was never recorded (harness crashed before startup stabilized) | Confirm harness binaries are installed and on `$PATH`; relaunch |
+| `missing_spawn_dir` | Crash during launch before spawn artifacts stabilized | Relaunch the spawn |
+| Exit 127 or 2 with empty report | Harness binary missing from `$PATH` | Install or fix PATH for the selected harness |
+| Exit 143 or 137 | Process terminated externally | Check `meridian spawn show <id>` first; if status is `succeeded`, signal hit during cleanup and no retry is needed. Otherwise check host logs for OOM or external kill, then retry |
+| Timeout exit | Runtime budget exceeded | Increase timeout or split task into smaller spawns |
+| Model/API error in `stderr.log` | Model unavailable or API rejected request | Check `meridian models list` and provider credentials |
+
+## Spawn Artifact Layout
+
+Each spawn writes artifacts under `.meridian/spawns/<spawn_id>/`.
+
+| File | Contents |
+|---|---|
+| `report.md` | Final report when the spawn reached report emission |
+| `output.jsonl` | Raw harness stdout (prefer `meridian spawn log`) |
+| `stderr.log` | Harness stderr, warnings, and errors |
+| `prompt.md` | Prompt materialized for the harness |
+| `harness.pid` | Foreground harness PID file |
+| `heartbeat` | Liveness touch file while spawn is active |
+
 ## First Checks
 
 Start with the normal read path:

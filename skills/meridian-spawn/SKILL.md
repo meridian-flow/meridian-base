@@ -54,18 +54,14 @@ Use the prompt input mode that matches prompt complexity:
 # Short inline
 meridian spawn -a reviewer -p 'review the auth diff'
 
-# Stdin pipe (for long prompts assembled from files or scripts)
-cat $MERIDIAN_WORK_DIR/prompt.md | meridian spawn -a coder
+# Stdin pipe (for long prompts)
+cat prompt.md | meridian spawn -a coder
 
-# Explicit file flag (for prompts that already exist on disk)
-meridian spawn -a coder --prompt-file $MERIDIAN_WORK_DIR/plan/phase-2.md
-
-# Prompt from file + multiple context files
-meridian spawn -a coder --prompt-file $MERIDIAN_WORK_DIR/plan/phase-2.md \
-  -f src/auth/tokens.py \
-  -f src/auth/middleware.py \
-  -f tests/test_auth.py
+# Explicit file flag
+meridian spawn -a coder --prompt-file plan/phase-2.md
 ```
+
+For work-scoped files, query `meridian work current` for the path and use it literally.
 
 Pass reference files with `-f` so the spawned agent starts with the context it needs instead of exploring from scratch:
 
@@ -143,7 +139,7 @@ If a spawn returns `"status": "failed"`, read the report via `spawn show SPAWN_I
 
 ## Shared Filesystem
 
-Spawns share filesystem directories for exchanging data without relying on conversation context (which does not survive across spawn boundaries). See `meridian-cli` for environment variable definitions.
+Spawns share filesystem directories for exchanging data without relying on conversation context (which does not survive across spawn boundaries). Query `meridian context` for `work_dir` and `fs_dir` — they are not in environment variables. `meridian work current` returns the expanded `work_dir` path.
 
 See the `/meridian-work-coordination` skill for when to use which.
 
