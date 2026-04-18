@@ -3,7 +3,8 @@ name = "meridian-base"
 version = "0.0.20"
 description = "Core coordination primitives for Meridian — orchestrator, subagent, and skills for spawning, state tracking, and session context."
 
-[dependencies]
+[dependencies.meridian-prompter]
+url = "https://github.com/meridian-flow/meridian-prompter"
 
 [settings]
 models_cache_ttl_hours = 24
