@@ -91,7 +91,7 @@ profile's own `model:` field — pick based on role, expect to revisit.
 
 Step 1: Read all the files passed with `-f`.
 Step 2: Search the codebase for related tests.
-Step 3: Write a plan and save it to $MERIDIAN_WORK_DIR/plan.md.
+Step 3: Write a plan and save it to the work directory.
 Step 4: Implement the plan.
 Step 5: Run the tests.
 Step 6: Write a report.

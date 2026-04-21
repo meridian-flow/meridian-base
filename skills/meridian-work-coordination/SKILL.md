@@ -40,13 +40,13 @@ meridian work delete old-item --force    # remove even if it has artifacts
 
 ## Artifact Placement
 
-Query `meridian work current` or `meridian context` for paths. Not in env vars.
+Query `meridian work current` for the work directory and `meridian context kb` for the knowledge base. Not in env vars.
 
-**`work_dir`** — scoped to the current work item. Archived when done.
+**work** (`meridian work current`) — scoped to the current work item. Archived when done.
 
-**`fs_dir`** — long-lived reference material. Persists across work items.
+**kb** (`meridian context kb`) — long-lived reference material. Persists across work items.
 
-Rule of thumb: *this* work item → `work_dir`. Project-wide → `fs_dir`.
+Rule of thumb: *this* work item → work dir. Project-wide → kb.
 
 ## Commit Work Artifacts
 

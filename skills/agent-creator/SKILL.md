@@ -293,9 +293,9 @@ Cover:
   prompt so the agent can explore on its own." This is one of the few
   places where naming invocation mechanics is appropriate, because the
   caller is the audience.
-- **Where it puts output** — e.g. `$MERIDIAN_WORK_DIR/design/`, so
-  orchestrators don't have to read agent code or wait for completion to
-  find artifacts.
+- **Where it puts output** — e.g. "writes to the work directory under
+  `design/`", so orchestrators don't have to read agent code or wait for
+  completion to find artifacts.
 
 The body, by contrast, should describe behaviors directly and stay silent
 on invocation mechanics.

@@ -18,7 +18,7 @@ State on disk is the source of truth. If it is not visible in `.meridian/` files
 | `meridian spawn` | Create, wait, list, show, log, cancel, stats, reports for subagent runs | `meridian spawn --help` |
 | `meridian work` | Work item lifecycle, dashboard, session listing | `meridian work --help` |
 | `meridian session` | Read and search harness session transcripts | `meridian session --help` |
-| `meridian context` | Resolved filesystem context (work_dir, fs_dir, repo_root, state_root, depth, context_roots) | `meridian context --help` |
+| `meridian context` | Resolved filesystem context (work, kb, repo root, state root) | `meridian context --help` |
 | `meridian models` | Model catalog and routing guidance | `meridian models list` |
 | `meridian config` | Resolved config inspection and overrides | `meridian config --help` |
 | `meridian doctor` | Health check and orphan reconciliation | `meridian doctor --help` |
@@ -54,9 +54,12 @@ For flag details, use `meridian session --help` and `meridian work sessions --he
 
 ## 6. Context Query
 
-`meridian context` is the source of truth for filesystem context. It returns `work_dir`, `fs_dir`, `repo_root`, `state_root`, `depth`, and `context_roots`. Query it and use the literal paths — `work_dir` and `fs_dir` are not projected into environment variables. See `meridian context --help` for flags.
+`meridian context` is the source of truth for filesystem context. It returns `work` and `kb` paths with their sources. Query it and use the literal paths — these are not projected into environment variables. See `meridian context --help` for flags.
 
-`meridian work current` returns the expanded `work_dir` path (not a work id).
+- `meridian context work` — absolute path to the work directory
+- `meridian context kb` — absolute path to the knowledge base directory
+- `meridian context work.archive` — absolute path to the work archive
+- `meridian work current` — absolute path to the work directory (same as `meridian context work` when a work item is active)
 
 ### Environment Variables
 

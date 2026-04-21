@@ -63,10 +63,10 @@ tail -f "$MERIDIAN_STATE_ROOT/spawns/SPAWN_ID/stderr.log"
 
 ## Shared Files
 
-If a workflow depends on handoff files, inspect `MERIDIAN_FS_DIR`.
+If a workflow depends on handoff files, inspect the knowledge base directory.
 
 ```bash
-ls -la "$MERIDIAN_FS_DIR"
+ls -la "$(meridian context kb)"
 ```
 
 ## Stuck Spawn Recovery
@@ -90,6 +90,6 @@ State layout is for debugging only:
 
 - `MERIDIAN_STATE_ROOT/spawns.jsonl`: spawn events
 - `MERIDIAN_STATE_ROOT/spawns/<id>/`: per-spawn artifacts and logs
-- `MERIDIAN_FS_DIR`: shared filesystem between spawns
+- KB dir (`meridian context kb`): shared knowledge base between spawns
 
 Prefer CLI reads and environment variables over hardcoded `.meridian/...` paths.

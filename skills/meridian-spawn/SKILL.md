@@ -63,12 +63,14 @@ meridian spawn -a coder --prompt-file plan/phase-2.md
 
 For work-scoped files, query `meridian work current` for the path and use it literally.
 
-Pass reference files with `-f` so the spawned agent starts with the context it needs instead of exploring from scratch:
+Pass reference files or directories with `-f` so the spawned agent starts with the context it needs instead of exploring from scratch. Files are included as full content; directories are included as a tree listing so the agent sees the structure and can read what it needs. Combine both — folder for the map, specific files for the content that matters:
 
 ```bash
-meridian spawn -a agent -p "Implement fix" \
-  -f plans/step.md \
-  -f src/module.py
+# Folder gives structure, specific files give content
+meridian spawn -a coder -p "Implement auth middleware" \
+  -f src/middleware/ \
+  -f src/middleware/base.py \
+  -f design/phase-2.md
 ```
 
 Run `meridian models list` to see available models with their strengths and cost tiers. Run `meridian models -h` for the full model management surface. Run `meridian mars list` to see available agent profiles and skills. Model and agent preferences belong in your project's agent profiles, `meridian config`, or project docs (CLAUDE.md, AGENTS.md) — hardcoding them into spawn commands makes them invisible to `meridian config show`, impossible to change project-wide, and silently divergent from profile defaults.
@@ -144,7 +146,7 @@ If a spawn returns `"status": "failed"`, read the report via `spawn show SPAWN_I
 
 ## Shared Filesystem
 
-Spawns share filesystem directories for exchanging data without relying on conversation context (which does not survive across spawn boundaries). Query `meridian context` for `work_dir` and `fs_dir` — they are not in environment variables. `meridian work current` returns the expanded `work_dir` path.
+Spawns share filesystem directories for exchanging data without relying on conversation context (which does not survive across spawn boundaries). Query `meridian work current` for the work directory and `meridian context kb` for the knowledge base — these are not in environment variables.
 
 See the `/meridian-work-coordination` skill for when to use which.
 

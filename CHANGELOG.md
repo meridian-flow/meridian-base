@@ -8,6 +8,12 @@ Caveman style. Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - `AGENTS.md` and `CLAUDE.md` — project instructions from dev-workflow.
 
 ### Changed
+- Context backend migration: `work_dir`/`fs_dir` → `work`/`kb`. All skills now use `meridian work current` and `meridian context kb` instead of old field names or env vars.
+- `meridian-cli/SKILL.md`: context query section rewritten — documents `meridian context work`, `meridian context kb`, `meridian context work.archive`. Removed stale `work_dir`/`fs_dir`/`repo_root`/`state_root`/`depth`/`context_roots` field list.
+- `meridian-spawn/SKILL.md`: shared filesystem section uses new query commands. `-f` now documented as accepting folders (tree listing) plus files (full content) — folder-for-map, file-for-content pattern.
+- `meridian-work-coordination/SKILL.md`: artifact placement uses `work`/`kb` vocabulary with query commands.
+- `meridian-cli/resources/debugging.md`: removed `$MERIDIAN_FS_DIR` env var refs — replaced with `meridian context kb` query.
+- `agent-creator`: removed `$MERIDIAN_WORK_DIR` env var refs from SKILL.md, example-profiles.md, anti-patterns.md.
 - `meridian-prompter` dep switched to `local-dependencies` — expects sibling checkout.
 - `meridian-spawn/SKILL.md`: teach `--bg` + single `wait` pattern for parallel spawns. Old pattern (harness-level `run_in_background` per spawn) caused N notifications and N partial summaries — token waste. New pattern: launch with `--bg`, single `wait` for all, one summary. Documents 30-minute wait checkpoint.
 

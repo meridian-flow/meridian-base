@@ -115,7 +115,7 @@ description: >
   implementation agents, reviews their output, and reports a synthesized
   result. Delegates through `meridian spawn` — does not implement code
   itself. Produces a decision log and pointers to spawned work under
-  `$MERIDIAN_WORK_DIR/`.
+  the work directory (query via `meridian work current`).
 effort: medium
 skills:
   - meridian-spawn
