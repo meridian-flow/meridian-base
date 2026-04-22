@@ -7,9 +7,9 @@ description: "Mental model and principles for the meridian and mars CLIs. Use wh
 
 ## 1. What Meridian Is
 
-Meridian is a thin coordination layer for multi-agent systems. It is not a runtime, database, or workflow engine. It launches subagents through harness adapters, persists spawn and session state under `.meridian/`, and exposes that state through one CLI.
+Meridian is a thin coordination layer for multi-agent systems. It is not a runtime, database, or workflow engine. It launches subagents through harness adapters, persists spawn and session state to disk, and exposes that state through one CLI.
 
-State on disk is the source of truth. If it is not visible in `.meridian/` files, it does not exist. There is no daemon and no long-lived in-memory state outside CLI processes.
+State on disk is the source of truth. Use `meridian context` to find state locations.
 
 ## 2. CLI Surface by Command Group
 
