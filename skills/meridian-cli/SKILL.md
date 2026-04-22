@@ -34,7 +34,7 @@ State on disk is the source of truth. If it is not visible in `.meridian/` files
 
 **Config precedence.** Resolution is per field: CLI flag, then `MERIDIAN_*` environment variable, then profile YAML, then project config, then user config, then harness defaults. A CLI model override must also drive derived harness resolution for that field. For concrete keys and defaults, see [`resources/configuration.md`](resources/configuration.md).
 
-**Parent session inheritance.** `$MERIDIAN_CHAT_ID` is inherited from the spawning session. Session reads and searches default to that parent context, which is where upstream decisions usually live.
+**Top-level chat id.** `$MERIDIAN_CHAT_ID` is the id of the top-level primary session at the root of the chat tree. Every spawn at any nesting depth inherits the same value, so session reads and searches default to the primary's transcript — where the root-level decisions and context live.
 
 **Crash-only design.** Writes use atomic tmp+rename, reads tolerate truncation, and reconciliation happens on read paths. Recovery is startup behavior, not a shutdown hook.
 
@@ -46,9 +46,9 @@ State on disk is the source of truth. If it is not visible in `.meridian/` files
 
 ## 5. Sessions
 
-`meridian session log <ref>` reads a transcript by chat id, spawn id, or harness session id. Segment `-c 0` reads latest compacted segment; increment `-c` to walk older segments. `meridian session search <query> <ref>` searches case-insensitively across segments and returns navigation context.
+`meridian session log <ref>` reads a transcript by chat id (`c123`), spawn id (`p123`), or raw harness session id. To read a session file directly, use `meridian session log --file path/to/session.jsonl`. Resolution falls back from active spawn output to the recorded harness transcript and then to stored spawn output — see `meridian session log --help` for the full resolution order per ref type. Segment `-c 0` reads the latest compacted segment; increment `-c` to walk older segments. `meridian session search <query> <ref>` searches case-insensitively across segments and returns navigation context.
 
-`meridian work sessions <work_id>` lists sessions tied to a work item, and `--all` includes archived history. Combined with parent-session inheritance, this is the standard path to recover decision history for ongoing work.
+`meridian work sessions <work_id>` lists sessions tied to a work item, and `--all` includes archived history. Combined with top-level chat id inheritance, this is the standard path to recover decision history for ongoing work.
 
 For flag details, use `meridian session --help` and `meridian work sessions --help`.
 
@@ -67,7 +67,7 @@ For flag details, use `meridian session --help` and `meridian work sessions --he
 |---|---|
 | `MERIDIAN_STATE_ROOT` | Override `.meridian/` location |
 | `MERIDIAN_DEPTH` | Spawn nesting depth (`>0` means inside a spawn) |
-| `MERIDIAN_CHAT_ID` | Inherited parent session id |
+| `MERIDIAN_CHAT_ID` | Top-level primary session id (same value at every depth) |
 
 ## 7. Resources
 

@@ -4,10 +4,14 @@ Caveman style. Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [0.0.26] - 2026-04-21
+
 ### Added
 - `AGENTS.md` and `CLAUDE.md` — project instructions from dev-workflow.
 
 ### Changed
+- `meridian-cli` skill: `$MERIDIAN_CHAT_ID` semantics corrected — top-level primary session id at root of chat tree, not parent. Fixed in prose, env-var table, sessions section. `session log <ref>` expanded: covers chat id / spawn id / harness session id; `--file path/to/session.jsonl` documented as separate invocation form; fallback resolution noted.
+- `meridian-spawn` skill: new `--from` section. Covers `<spawn-id>` for predecessor reasoning and `$MERIDIAN_CHAT_ID` for top-level primary conversation. Examples show env-var paired with `-f` files (framing vs scope discipline).
 - Context backend migration: `work_dir`/`fs_dir` → `work`/`kb`. All skills now use `meridian work current` and `meridian context kb` instead of old field names or env vars.
 - `meridian-cli/SKILL.md`: context query section rewritten — documents `meridian context work`, `meridian context kb`, `meridian context work.archive`. Removed stale `work_dir`/`fs_dir`/`repo_root`/`state_root`/`depth`/`context_roots` field list.
 - `meridian-spawn/SKILL.md`: shared filesystem section uses new query commands. `-f` now documented as accepting folders (tree listing) plus files (full content) — folder-for-map, file-for-content pattern.

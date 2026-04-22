@@ -73,6 +73,22 @@ meridian spawn -a coder -p "Implement auth middleware" \
   -f design/phase-2.md
 ```
 
+Pass prior conversation history with `--from` when the spawn needs reasoning that isn't materialized to files. `--from <spawn-id>` pulls a specific prior spawn's transcript. `--from $MERIDIAN_CHAT_ID` pulls the top-level primary session — the root conversation at the top of the chat tree, available at any spawn depth because `$MERIDIAN_CHAT_ID` is inherited by every descendant. Use the env-var form when a spawned descendant needs the primary's original framing, decisions, or context:
+
+The env-var form supplies framing and rationale; concrete scope still comes from `-f` files and the prompt:
+
+```bash
+# Top-level conversation gives framing; plan file and source dir give scope
+meridian spawn -a coder \
+  --from $MERIDIAN_CHAT_ID \
+  -f plan/phase-2.md \
+  -f src/auth/ \
+  -p "Implement phase 2 per the approach discussed at the primary"
+
+# Pull a specific prior spawn's reasoning
+meridian spawn -a reviewer --from p203 -f design/auth.md -p "Review against design intent"
+```
+
 Run `meridian models list` to see available models with their strengths and cost tiers. Run `meridian models -h` for the full model management surface. Run `meridian mars list` to see available agent profiles and skills. Model and agent preferences belong in your project's agent profiles, `meridian config`, or project docs (CLAUDE.md, AGENTS.md) — hardcoding them into spawn commands makes them invisible to `meridian config show`, impossible to change project-wide, and silently divergent from profile defaults.
 
 To create or edit agent profiles, load the `agent-creator` skill. To create or edit skill files, load the `skill-creator` skill.
