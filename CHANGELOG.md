@@ -9,6 +9,9 @@ Caveman style. Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ### Added
 - `meridian-spawn` skill: "Steering a Running Spawn" section — teaches inject-before-cancel pattern so agents send course corrections instead of killing spawns.
 
+### Changed
+- `meridian-default-orchestrator`, `meridian-subagent`: broaden disallowed git commands — block `checkout`, `switch`, `stash` (not just `checkout --`).
+
 ## [0.0.28] - 2026-04-24
 
 ### Added
