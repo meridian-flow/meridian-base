@@ -4,6 +4,11 @@ Caveman style. Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [0.0.28] - 2026-04-24
+
+### Added
+- `md-validation` skill — teaches agents `meridian kg` (link topology, broken link checking) and `meridian mermaid check` (diagram validation). Loaded by doc-facing agents.
+
 ## [0.0.26] - 2026-04-21
 
 ### Added
