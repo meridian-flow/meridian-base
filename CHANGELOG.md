@@ -4,6 +4,11 @@ Caveman style. Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [0.0.30] - 2026-04-25
+
+### Changed
+- `meridian-spawn` skill: background waits now taught as pending-set barriers, not per-spawn immediate waits. Explicitly says do not poll constantly, prefer sparse 10-minute shell polling, and keep one live wait session instead of reissuing waits.
+
 ## [0.0.29] - 2026-04-24
 
 ### Added
