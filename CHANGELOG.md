@@ -4,6 +4,9 @@ Caveman style. Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### Changed
+- Model catalog guidance: use `meridian mars models list`, not old `meridian models list`.
+
 ## [0.0.30] - 2026-04-25
 
 ### Changed

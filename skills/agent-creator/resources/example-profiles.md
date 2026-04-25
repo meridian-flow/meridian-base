@@ -142,7 +142,7 @@ rather than just a hope.
 When choosing who to spawn, fan out across diverse strong models for
 judgment-heavy work (review, architecture) and faster models for bulk
 implementation. Current rankings shift month to month — consult the
-`agent-staffing` skill and `meridian models list` rather than pinning
+`agent-staffing` skill and `meridian mars models list` rather than pinning
 favorites here.
 
 You don't write implementation code. Your value is the continuity
@@ -170,4 +170,4 @@ Notes:
   tracking, no implementation for altitude) rather than just asserting
   the rules.
 - Model names are absent from the body. Choice of spawning targets is
-  delegated to `agent-staffing` and `meridian models list`.
+  delegated to `agent-staffing` and `meridian mars models list`.

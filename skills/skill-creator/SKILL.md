@@ -266,7 +266,7 @@ need.
 Model rankings and pricing shift month to month. Hardcoding "use opus
 for X and gpt-5.4 for Y" means the skill is stale the day a new model
 ships. Instead write "fan out across diverse strong models" and point to
-`meridian models list` or the `agent-staffing` skill for current guidance.
+`meridian mars models list` or the `agent-staffing` skill for current guidance.
 Match model cost to task value — strong reasoning models for
 judgment-heavy work, fast models for bulk work.
 

@@ -89,7 +89,7 @@ meridian spawn -a coder \
 meridian spawn -a reviewer --from p203 -f design/auth.md -p "Review against design intent"
 ```
 
-Run `meridian models list` to see available models with their strengths and cost tiers. Run `meridian models -h` for the full model management surface. Run `meridian mars list` to see available agent profiles and skills. Model and agent preferences belong in your project's agent profiles, `meridian config`, or project docs (CLAUDE.md, AGENTS.md) — hardcoding them into spawn commands makes them invisible to `meridian config show`, impossible to change project-wide, and silently divergent from profile defaults.
+Run `meridian mars models list` to see available models with their strengths and cost tiers. Run `meridian mars models -h` for the full model management surface. Run `meridian mars list` to see available agent profiles and skills. Model and agent preferences belong in your project's agent profiles, `meridian config`, or project docs (CLAUDE.md, AGENTS.md) — hardcoding them into spawn commands makes them invisible to `meridian config show`, impossible to change project-wide, and silently divergent from profile defaults.
 
 To create or edit agent profiles, load the `agent-creator` skill. To create or edit skill files, load the `skill-creator` skill.
 

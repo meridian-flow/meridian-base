@@ -61,7 +61,7 @@ meridian spawn -a coder -m <sandboxed-model> -p "..."
 meridian spawn -a coder -m <unsandboxed-model> -p "..."
 ```
 
-Run `meridian models list` to see which models route to which harness.
+Run `meridian mars models list` to see which models route to which harness.
 
 ## Common Escalation Scenarios
 

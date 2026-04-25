@@ -19,7 +19,7 @@ State on disk is the source of truth. Use `meridian context` to find state locat
 | `meridian work` | Work item lifecycle, dashboard, session listing | `meridian work --help` |
 | `meridian session` | Read and search harness session transcripts | `meridian session --help` |
 | `meridian context` | Resolved filesystem context (work, kb, repo root, state root) | `meridian context --help` |
-| `meridian models` | Model catalog and routing guidance | `meridian models list` |
+| `meridian mars models` | Canonical model catalog and routing guidance | `meridian mars models list` |
 | `meridian config` | Resolved config inspection and overrides | `meridian config --help` |
 | `meridian doctor` | Health check and orphan reconciliation | `meridian doctor --help` |
 | `meridian mars` | Bundled mars CLI for `.agents/` package management | `meridian mars --help` |

@@ -70,7 +70,7 @@ gpt-5.3-codex for implementation. Sonnet handles documentation.
 
 ```markdown
 When you need a review, fan out across diverse strong models — see
-`meridian models list` and the `agent-staffing` skill for current
+`meridian mars models list` and the `agent-staffing` skill for current
 guidance. Match model strength to task value: judgment-heavy work
 (review, architecture) earns stronger models; bulk implementation and
 research run well on fast ones.

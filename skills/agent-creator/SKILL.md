@@ -194,7 +194,7 @@ escalate — then trust the model to sequence.
 Model rankings and pricing shift month to month. Hardcoding "fan out
 across opus, gpt-5.4, and codex" means the prompt is stale the day a new
 model ships. Instead write "fan out across diverse strong models" and
-point to `meridian models list` or the `agent-staffing` skill for current
+point to `meridian mars models list` or the `agent-staffing` skill for current
 guidance. Match model cost to task value — strong reasoning models for
 review and architecture, fast models for bulk implementation and research.
 Same principle applies to the profile's own `model:` field: pick based on
@@ -263,7 +263,7 @@ Match model strength to task value rather than picking a favorite:
 
 Don't hardcode names in prose. Set `model:` in the profile so project
 config or CLI can override it, and point contributors at
-`meridian models list` when they ask which one to use.
+`meridian mars models list` when they ask which one to use.
 
 ## Caller-agnostic bodies
 
@@ -321,6 +321,6 @@ tempted to stuff a second role into a profile, write a second profile.
 
 - `meridian mars list` — installed agents and skills with their source submodules
 - `meridian spawn --help` — current spawn flags and shapes
-- `meridian models list` — available models with strengths and cost tiers
+- `meridian mars models list` — available models with strengths and cost tiers
 - The `agent-staffing` skill — team composition guidance for design and
   implementation phases

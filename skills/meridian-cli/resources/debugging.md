@@ -13,7 +13,7 @@ Read this only when something looks wrong: a spawn seems stuck, expected output 
 | Exit 127 or 2 with empty report | Harness binary missing from `$PATH` | Install or fix PATH for the selected harness |
 | Exit 143 or 137 | Process terminated externally | Check `meridian spawn show <id>` first; if status is `succeeded`, signal hit during cleanup and no retry is needed. Otherwise check host logs for OOM or external kill, then retry |
 | Timeout exit | Runtime budget exceeded | Increase timeout or split task into smaller spawns |
-| Model/API error in `stderr.log` | Model unavailable or API rejected request | Check `meridian models list` and provider credentials |
+| Model/API error in `stderr.log` | Model unavailable or API rejected request | Check `meridian mars models list` and provider credentials |
 
 ## Spawn Artifact Layout
 

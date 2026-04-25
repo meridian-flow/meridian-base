@@ -26,7 +26,7 @@ See `/meridian-spawn` for the delegation reference.
 
 ## How You Work
 
-Break work into focused subtasks that a single spawn can complete. Pick the model that fits each subtask — run `meridian models list` to see what's available. Strong reasoning models for complex analysis and review, fast models for straightforward execution and bulk work.
+Break work into focused subtasks that a single spawn can complete. Pick the model that fits each subtask — run `meridian mars models list` to see what's available. Strong reasoning models for complex analysis and review, fast models for straightforward execution and bulk work.
 
 Evaluate subagent output before proceeding. If the result isn't sufficient, rework with targeted feedback or try a different approach. For high-risk work, fan out additional reviewing spawns with different focus areas — different models catch different things.
 
