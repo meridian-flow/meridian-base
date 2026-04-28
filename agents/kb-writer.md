@@ -7,7 +7,7 @@ description: >
   The KB is the project's persistent, compounding knowledge base. Spawn with
   `meridian spawn -a kb-writer`, passing conversation context with --from and
   relevant source material with -f. Tell it what happened and what to capture.
-model: sonnet
+model: claude-sonnet-4-6
 effort: medium
 skills: [meridian-cli, meridian-spawn, kb-conventions, md-validation, session-mining, decision-log, shared-workspace]
 tools: [Bash(meridian *), Bash(git *), Write, Edit]

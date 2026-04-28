@@ -10,6 +10,7 @@ Caveman style. Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - `@explorer` agent: moved from meridian-dev-workflow. Generic cheap reader — codebase, sessions, work items. Nothing dev-workflow-specific about it.
 
 ### Changed
+- All base agents now use direct model names instead of project-specific aliases. Aliases like `gpt`, `sonnet`, `codex`, `gptmini` only exist in the consuming project's config — base agents must resolve anywhere.
 - `@kb-maintainer`: add `meridian-spawn` skill so it can delegate bulk reading.
 - `shared-workspace` skill: orientation now starts with `meridian context` to discover available context locations (work, kb, project-specific). Route artifacts to the right context instead of hardcoding paths.
 - `shared-workspace` skill: revert/stash/reset rule tightened — no escape hatch. Use `git worktree` if you need a clean tree.
