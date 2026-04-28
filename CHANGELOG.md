@@ -4,6 +4,15 @@ Caveman style. Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [0.0.32] - 2026-04-28
+
+### Added
+- `@kb-writer` agent: writes and updates KB — decisions, domain knowledge, architecture, synthesized research. Replaces content-writing half of old `@code-documenter`. Sonnet model, workspace-write.
+- `@kb-maintainer` agent: structural health of KB — splits oversized docs, merges fragments, fixes cross-references, flags contradictions with `> [!FLAG]` markers for human review. GPT model, workspace-write.
+- `kb-conventions` skill: shared KB structure, navigation, writing standards, flag protocol, what-belongs-where table. Loaded by both kb-writer and kb-maintainer.
+- `decision-log` skill: moved from meridian-dev-workflow. Decision capture methodology — reasoning, alternatives, constraints.
+- `session-mining` skill: moved from meridian-dev-workflow. Transcript mining patterns — top-level session recovery, bulk delegation to explorer, per-work-item session discovery.
+
 ### Changed
 - Model catalog guidance: use `meridian mars models list`, not old `meridian models list`.
 
