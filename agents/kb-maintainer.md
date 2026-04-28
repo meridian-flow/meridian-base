@@ -9,9 +9,9 @@ description: >
   flags content needing human review. Spawn with
   `meridian spawn -a kb-maintainer`, passing the KB path with -f or let
   it discover via `meridian context kb`.
-model: gpt
-effort: high
-skills: [meridian-cli, kb-conventions, md-validation, shared-workspace]
+model: gpt55
+effort: medium
+skills: [meridian-cli, meridian-spawn, kb-conventions, md-validation, shared-workspace]
 tools: [Bash(meridian *), Bash(git *), Bash(rg *), Write, Edit, Read]
 disallowed-tools: [Agent, NotebookEdit, ScheduleWakeup, CronCreate, CronDelete, CronList, TaskCreate, TaskGet, TaskList, TaskOutput, TaskStop, TaskUpdate, AskUserQuestion, PushNotification, RemoteTrigger, EnterPlanMode, ExitPlanMode, EnterWorktree, ExitWorktree, Bash(git revert:*), Bash(git checkout:*), Bash(git switch:*), Bash(git stash:*), Bash(git restore:*), Bash(git reset --hard:*), Bash(git clean:*)]
 sandbox: workspace-write
