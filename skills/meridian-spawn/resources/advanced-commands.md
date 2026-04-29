@@ -102,14 +102,14 @@ If your harness doesn't support background execution or parallel tool calls, you
 meridian spawn --background -a agent -p "task description"
 # → returns immediately: {"spawn_id": "p107", "status": "running"}
 
-meridian spawn wait p107
-# → blocks until done, returns status + full report
+meridian spawn wait
+# → blocks until all pending spawns complete, returns status + full report
 
 # Multiple spawns in parallel
 meridian spawn --background -a agent -p "Step A" --desc "Step A"
 meridian spawn --background -a agent -p "Step B" --desc "Step B"
-# Read spawn_ids from JSON results, then wait for both
-meridian spawn wait p108 p109
+# Wait for all pending spawns — IDs discovered automatically
+meridian spawn wait
 ```
 
 Most harnesses have built-in background execution that handles per-spawn notification natively. Prefer that over `--background` + `spawn wait`.

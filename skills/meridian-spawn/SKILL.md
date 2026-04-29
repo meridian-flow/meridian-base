@@ -20,8 +20,8 @@ Spawns block by default. Use `--bg` to return immediately with a spawn ID, then 
 meridian spawn -a coder -p "Step A" --bg  # → p101
 meridian spawn -a coder -p "Step B" --bg  # → p102
 
-# Wait for all at once
-meridian spawn wait p101 p102
+# Wait for all pending spawns (discovers p101, p102 automatically)
+meridian spawn wait
 ```
 
 ## Spawning
@@ -120,13 +120,15 @@ meridian spawn -a coder -p "Implement auth" --bg --desc "auth"      # → p101
 meridian spawn -a coder -p "Implement cache" --bg --desc "cache"    # → p102
 meridian spawn -a reviewer -p "Review design" --bg --desc "review"  # → p103
 
-# Single wait for all — one result, one summary
-meridian spawn wait p101 p102 p103
+# Wait for all pending spawns — no IDs needed
+meridian spawn wait
 ```
 
 **Why this pattern matters:** If you use your harness's background execution (e.g. Claude Code's `run_in_background: true`) on each spawn separately, you get N notifications as spawns complete one by one. Each notification triggers a response and summary, wasting tokens on partial progress. The `--bg` + single `wait` pattern gives you one notification when ALL spawns complete — one summary, no waste.
 
-**Background wait discipline:** Treat backgrounded spawn ids as a pending set, not as "wait immediately after every spawn." Add each returned spawn id to the set. Keep launching the planned burst of `--bg` spawns, or do other local work that does not depend on their results. Drain the pending set with one combined `meridian spawn wait ...` at a barrier:
+**Background wait discipline:** Launch all planned `--bg` spawns, then drain with `meridian spawn wait` at a barrier. No need to track individual spawn IDs — `meridian spawn wait` discovers all pending spawns for the current chat automatically.
+
+Drain at a barrier:
 
 - before a final response
 - before starting a next step that depends on those spawn results
@@ -135,15 +137,14 @@ meridian spawn wait p101 p102 p103
 
 When `meridian spawn wait ...` runs through a harness shell tool, do not poll constantly. Keep the same live shell session and poll it sparsely. Prefer long polling intervals such as 10 minutes (`yield_time_ms=600000`) between polls. Do not start a second `meridian spawn wait ...` while the first wait session is still active.
 
-Wait has a 30-minute checkpoint. If spawns are still running, check their progress and re-wait:
+Wait yields every 4 minutes to preserve prompt cache. If spawns are still running, re-run the same command:
 
 ```bash
-# Check if spawn is active
-meridian session log p101 --last 5
-
-# Continue waiting if still making progress
-meridian spawn wait p101 p102 p103
+# Continue waiting after yield
+meridian spawn wait
 ```
+
+Use `--yield-after-secs` to override the default 4-minute interval.
 
 ## Checking Status
 
@@ -155,7 +156,7 @@ meridian work
 
 See `meridian-cli` for crash-only recovery behavior and reconciliation details.
 
-To reattach to a spawn still running from a previous session, use `meridian spawn wait <spawn_id>`.
+To reattach to spawns still running from a previous session, use `meridian spawn wait` (discovers all pending) or `meridian spawn wait <spawn_id>` for a specific spawn.
 
 To see what a spawn spawned, use `spawn children`:
 
