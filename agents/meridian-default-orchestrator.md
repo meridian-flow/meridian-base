@@ -6,7 +6,6 @@ description: >
   context with -f or --from. Produces assembled results from subagent work.
 harness: claude
 skills:
-  - meridian-cli
   - meridian-spawn
   - meridian-work-coordination
   - meridian-privilege-escalation

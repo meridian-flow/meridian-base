@@ -6,6 +6,21 @@ Be brief. Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Vers
 
 ### Changed
 - `meridian-cli`, `meridian-spawn`, `meridian-work-coordination`: context dirs now available as `MERIDIAN_CONTEXT_*_DIR` env vars, injected into agent system prompts at launch. Removed "not in environment variables" guidance. `$MERIDIAN_WORK_DIR` documented as active work item (separate from `$MERIDIAN_CONTEXT_WORK_DIR` work root).
+- `meridian-spawn`: trimmed 1589→756w. Absorbed meridian-cli §3 (output discipline, spawn lifecycle, crash-only design). Fixed abbreviated commands. Removed redundant examples.
+- `decision-log`: trimmed 412→186w. Core ideas only — record while fresh, what/why/what-else, skip obvious. Decisions belong where they naturally belong, not a mandatory file path.
+- `md-validation`: trimmed body, moved mermaid authoring and command reference to resources/.
+- `meridian-privilege-escalation`: removed stale `unrestricted` sandbox tier and `--add-dir` flag.
+- `kb-writer`: removed mandatory `decisions.md` file references. Decision mining captures to relevant domain docs.
+- `kb-maintainer`: removed `decisions.md` verification requirements.
+- `kb-conventions`: removed `decisions.md` from KB layout.
+- All skills get explicit invocation-control flags. Safety nets (`meridian-privilege-escalation`) explicitly flipped to allow implicit loading.
+- `AGENTS.md`: fixed title (was copy of dev-workflow), added `mars version` release guidance.
+- `README.md`: removed stale `meridian-cli` skill from table, fixed parallel spawn example, removed stale `meridian report search`.
+
+### Removed
+- `agent-creator` skill (entire directory with resources/).
+- `skill-creator` skill (entire directory with resources/).
+- `meridian-cli` from `explorer`, `kb-writer`, `kb-maintainer`, `meridian-default-orchestrator` skill lists.
 
 ## [0.0.36] - 2026-04-30
 

@@ -5,6 +5,8 @@ description: >
   writing standards, and the flag protocol for human review. Load when
   reading from, writing to, or maintaining the KB. Also load when deciding
   what belongs in the KB vs the work directory.
+disable-model-invocation: true
+allow_implicit_invocation: false
 ---
 
 # KB Conventions
@@ -19,14 +21,12 @@ well-structured and maintained.
 ```
 kb/
   index.md              # page catalog — links + one-line summaries by domain
-  decisions.md          # decision index — what, when, link to rationale
   <domain>/             # topic directories, emerge organically
     overview.md         # orients on the domain, links to pages
     <topic>.md          # one coherent concept per doc
 ```
 
 - `index.md` is the entry point. Read it first to understand what's documented.
-- `decisions.md` indexes decisions with links to full rationale in domain docs.
 - Domains emerge as the KB grows. A domain earns a directory when it has
   enough distinct concepts for multiple docs.
 

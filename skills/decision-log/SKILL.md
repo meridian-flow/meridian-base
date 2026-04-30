@@ -5,6 +5,8 @@ description: >
   Use whenever you're making design choices, weighing alternatives,
   adapting plans, or rejecting an approach — any moment where "we chose X
   over Y" needs to survive beyond this conversation.
+disable-model-invocation: true
+allow_implicit_invocation: false
 ---
 
 # Decision Log

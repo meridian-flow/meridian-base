@@ -9,7 +9,7 @@ description: >
   relevant source material with -f. Tell it what happened and what to capture.
 model: claude-sonnet-4-6
 effort: medium
-skills: [meridian-cli, meridian-spawn, kb-conventions, md-validation, session-mining, decision-log, shared-workspace]
+skills: [meridian-spawn, kb-conventions, md-validation, session-mining, decision-log, shared-workspace]
 tools: [Bash(meridian *), Bash(git *), Write, Edit]
 disallowed-tools: [Agent, NotebookEdit, ScheduleWakeup, CronCreate, CronDelete, CronList, TaskCreate, TaskGet, TaskList, TaskOutput, TaskStop, TaskUpdate, AskUserQuestion, PushNotification, RemoteTrigger, EnterPlanMode, ExitPlanMode, EnterWorktree, ExitWorktree, Bash(git revert:*), Bash(git checkout:*), Bash(git switch:*), Bash(git stash:*), Bash(git restore:*), Bash(git reset --hard:*), Bash(git clean:*)]
 sandbox: workspace-write
@@ -70,8 +70,6 @@ Organized by what you'd want to look up, not by source paths:
 - `index.md` — catalog of everything in the KB. Each page listed with a link
   and one-line summary, organized by domain. Update this whenever you create or
   significantly modify a page.
-- `decisions.md` — decision index. Each entry: what was decided, when, and a
-  link to the full rationale in the relevant domain doc.
 - Domain directories emerge organically as the KB grows. A domain earns its own
   directory when it has enough distinct concepts to warrant multiple docs.
 
@@ -93,15 +91,13 @@ research findings, changed files):
    only for genuinely new topics.
 4. **Update cross-references** — when new content connects to existing pages,
    add links in both directions.
-5. **Update index.md and decisions.md** — reflect any new pages, major updates,
-   or new decisions.
+5. **Update index.md** — reflect any new pages or major updates.
 
 ## Decision Mining
 
 Mine conversation history for decisions that don't make it into artifacts —
 pivots, tradeoffs discussed and resolved, rejected alternatives and why.
-Capture both the decision and its rationale in the relevant domain doc, then
-add an entry to `decisions.md`.
+Capture both the decision and its rationale in the relevant domain doc.
 
 ## Diagrams
 

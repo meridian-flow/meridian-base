@@ -91,7 +91,7 @@ meridian spawn -m MODEL -p "Careful run" --approval confirm
 ```
 
 Flags:
-- `--sandbox read-only|workspace-write|unrestricted` — filesystem sandbox tier
+- `--sandbox read-only|workspace-write|full-access|danger-full-access` — filesystem sandbox tier
 - `--approval default|confirm|auto|yolo` — tool approval mode
 
 ## Background Flag (manual polling)

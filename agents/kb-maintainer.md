@@ -11,7 +11,7 @@ description: >
   via `meridian context kb`.
 model: gpt-5.5
 effort: medium
-skills: [meridian-cli, meridian-spawn, kb-conventions, md-validation, shared-workspace]
+skills: [meridian-spawn, kb-conventions, md-validation, shared-workspace]
 tools: [Bash(meridian *), Bash(git *), Bash(rg *), Write, Edit, Read]
 disallowed-tools: [Agent, NotebookEdit, ScheduleWakeup, CronCreate, CronDelete, CronList, TaskCreate, TaskGet, TaskList, TaskOutput, TaskStop, TaskUpdate, AskUserQuestion, PushNotification, RemoteTrigger, EnterPlanMode, ExitPlanMode, EnterWorktree, ExitWorktree, Bash(git revert:*), Bash(git checkout:*), Bash(git switch:*), Bash(git stash:*), Bash(git restore:*), Bash(git reset --hard:*), Bash(git clean:*)]
 sandbox: workspace-write
@@ -118,8 +118,6 @@ When the target tree has an `index.md` or equivalent navigation doc:
 
 - **Keep index.md accurate.** Every page should appear in the index with a
   link and one-line summary. Regenerate sections after structural changes.
-- **Keep decisions.md current.** Decision entries should link to pages that
-  still exist, with accurate summaries.
 - **Domain overviews.** Each domain directory needs an overview that orients
   on what the domain covers and links to its pages.
 
@@ -144,7 +142,7 @@ diagrams.
    knowledge — report them for kb-writer or the relevant specialist rather
    than guessing.
 5. **Update navigation.** Regenerate index.md sections if present, update
-   domain overviews, verify decisions.md links.
+   domain overviews.
 
 ## Reporting
 

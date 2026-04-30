@@ -15,9 +15,10 @@ An orchestrator that can do this out of the box:
 # Break work into subtasks and delegate
 meridian spawn -m codex -p "Implement the data model" -f plan/phase-1.md
 
-# Run tasks in parallel (each blocks until done; harness runs them concurrently)
-meridian spawn -m codex -p "Phase 2a: API endpoints"
-meridian spawn -m codex -p "Phase 2b: CLI handlers"
+# Run tasks in parallel
+meridian spawn -m codex -p "Phase 2a: API endpoints" --bg
+meridian spawn -m codex -p "Phase 2b: CLI handlers" --bg
+meridian spawn wait
 
 # Track work items across sessions
 meridian work start "auth-refactor"
@@ -25,11 +26,10 @@ meridian work update --status implementing
 
 # Search past context
 meridian session search "auth design decision"
-meridian report search "token expiry"
 ```
 
 These capabilities come from the skills below — they're injected into the
-orchestrator's system prompt so the agent knows how to use meridian's CLI.
+agent's system prompt so it knows how to use meridian's CLI.
 
 ## Agents
 
@@ -42,7 +42,6 @@ orchestrator's system prompt so the agent knows how to use meridian's CLI.
 
 | Skill | What it teaches the agent |
 |---|---|
-| `meridian-cli` | Meridian and Mars CLI mental model — command-surface discovery, diagnostics patterns, sessions, and core principles |
 | `meridian-spawn` | The `meridian spawn` CLI — launching, waiting, parallel execution, reading reports |
 | `meridian-work-coordination` | Work item lifecycle — creating, switching, updating status, placing artifacts |
 

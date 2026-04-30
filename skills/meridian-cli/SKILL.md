@@ -1,6 +1,8 @@
 ---
 name: meridian-cli
 description: "Mental model and principles for the meridian and mars CLIs. Use when an agent needs to discover what meridian can do, learn a subcommand, diagnose a failure, or understand why meridian behaves the way it does. Points at `meridian --help` and `meridian mars --help` as the canonical reference rather than duplicating them."
+disable-model-invocation: true
+allow_implicit_invocation: false
 ---
 
 # meridian-cli

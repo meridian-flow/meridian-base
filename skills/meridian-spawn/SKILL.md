@@ -5,6 +5,8 @@ description: >
   need to delegate work to another agent, run tasks in parallel, check on
   spawn progress, coordinate multiple agents, or inspect spawn outputs. Also
   use when you want to route work to a specific model or provider.
+disable-model-invocation: true
+allow_implicit_invocation: false
 ---
 
 # meridian-spawn
@@ -90,7 +92,7 @@ Use the work dashboard for situational awareness:
 meridian work
 ```
 
-Reattach to spawns from a previous session with `meridian spawn wait` or `meridian spawn wait <spawn_id>`. Use `spawn children <id>` to see what a spawn spawned.
+Reattach to spawns from a previous session with `meridian spawn wait` or `meridian spawn wait <spawn_id>`. Use `meridian spawn children <id>` to see what a spawn spawned.
 
 ## Steering a Running Spawn
 
@@ -102,7 +104,7 @@ meridian spawn inject p107 --message "Use the existing adapter pattern in src/ad
 
 ## When a Spawn Fails
 
-Read the report via `spawn show SPAWN_ID`. For deeper investigation, see [`../meridian-cli/resources/debugging.md`](../meridian-cli/resources/debugging.md).
+Read the report via `meridian spawn show SPAWN_ID`. For deeper investigation, see [`../meridian-cli/resources/debugging.md`](../meridian-cli/resources/debugging.md).
 
 ## Shared Filesystem
 
@@ -112,7 +114,7 @@ See the `/meridian-work-coordination` skill for when to use which.
 
 ## Committing Spawn Changes
 
-Use `spawn files` to stage exactly what a spawn changed:
+Use `meridian spawn files` to stage exactly what a spawn changed:
 
 ```bash
 meridian spawn files p107 | xargs git add
