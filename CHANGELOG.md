@@ -4,6 +4,12 @@ Caveman style. Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [0.0.34] - 2026-04-30
+
+### Changed
+- `@kb-maintainer`: target-aware path resolution — operates on an explicitly passed tree (e.g., work-item `design/` via `-f`) or defaults to the durable KB via `meridian context kb`. KB-specific commands (`meridian kg check/graph`) gated to KB target only; non-KB targets use `rg` and directory listing for cross-reference analysis. Description, body, and workflow all generalized. Navigability and diagram validation sections apply to any target with the relevant files present.
+- `md-validation` skill: documents shipped `mermaid check` style warnings — `--strict`, `--no-style`, `--disable` flags; default categories (`ox-edge`, `bare-end`, `fill-no-color`); inline suppression syntax (`%% mermaid-check-ignore[-next-line] [category]`); warning output format and exit code semantics. Authoring rules and dark/light mode color guidance preserved.
+
 ## [0.0.33] - 2026-04-28
 
 ### Added
