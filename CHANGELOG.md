@@ -4,6 +4,8 @@ Be brief. Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Vers
 
 ## [Unreleased]
 
+## [0.1.0] - 2026-04-30
+
 ### Changed
 - `meridian-cli`, `meridian-spawn`, `meridian-work-coordination`: context dirs now available as `MERIDIAN_CONTEXT_*_DIR` env vars, injected into agent system prompts at launch. Removed "not in environment variables" guidance. `$MERIDIAN_WORK_DIR` documented as active work item (separate from `$MERIDIAN_CONTEXT_WORK_DIR` work root).
 - `meridian-spawn`: trimmed 1589→756w. Absorbed meridian-cli §3 (output discipline, spawn lifecycle, crash-only design). Fixed abbreviated commands. Removed redundant examples.
