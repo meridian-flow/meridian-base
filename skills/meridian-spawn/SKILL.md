@@ -63,7 +63,7 @@ meridian spawn -a coder --prompt-file plan/phase-2.md
 
 For work-scoped files, query `meridian work current` for the path and use it literally.
 
-Pass reference files or directories with `-f` so the spawned agent starts with the context it needs instead of exploring from scratch. Files are included as full content; directories are included as a tree listing so the agent sees the structure and can read what it needs. Combine both — folder for the map, specific files for the content that matters:
+Pass reference files or directories with `-f` so the spawned agent starts with the context it needs instead of exploring from scratch. Files are included as full content; directories are included as a tree listing so the agent sees the structure and can read what it needs. Combine both — folder for the map, specific files for the content that matters. Scope tightly: 2-4 files is typical, six is heavy, ten means the handoff needs rethinking. Point to where more context lives instead of attaching everything.
 
 ```bash
 # Folder gives structure, specific files give content
@@ -73,7 +73,7 @@ meridian spawn -a coder -p "Implement auth middleware" \
   -f design/phase-2.md
 ```
 
-Pass prior conversation history with `--from` when the spawn needs reasoning that isn't materialized to files. `--from <spawn-id>` pulls a specific prior spawn's transcript. `--from $MERIDIAN_CHAT_ID` pulls the top-level primary session — the root conversation at the top of the chat tree, available at any spawn depth because `$MERIDIAN_CHAT_ID` is inherited by every descendant. Use the env-var form when a spawned descendant needs the primary's original framing, decisions, or context:
+Pass prior conversation history with `--from` when the spawn needs reasoning that isn't materialized to files. If reasoning is critical and ephemeral, materialize it to a file first rather than relying on `--from`. `--from <spawn-id>` pulls a specific prior spawn's transcript. `--from $MERIDIAN_CHAT_ID` pulls the top-level primary session — the root conversation at the top of the chat tree, available at any spawn depth because `$MERIDIAN_CHAT_ID` is inherited by every descendant. Use the env-var form when a spawned descendant needs the primary's original framing, decisions, or context:
 
 The env-var form supplies framing and rationale; concrete scope still comes from `-f` files and the prompt:
 
@@ -180,7 +180,7 @@ If a spawn returns `"status": "failed"`, read the report via `spawn show SPAWN_I
 
 ## Shared Filesystem
 
-Spawns share filesystem directories for exchanging data without relying on conversation context (which does not survive across spawn boundaries). Query `meridian work current` for the work directory and `meridian context kb` for the knowledge base — these are not in environment variables.
+Spawns share filesystem directories for exchanging data without relying on conversation context (which does not survive across spawn boundaries). Context directories (`$MERIDIAN_CONTEXT_*_DIR`) are injected into every agent's system prompt at launch.
 
 See the `/meridian-work-coordination` skill for when to use which.
 

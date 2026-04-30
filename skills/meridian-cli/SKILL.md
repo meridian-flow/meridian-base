@@ -54,17 +54,19 @@ For flag details, use `meridian session --help` and `meridian work sessions --he
 
 ## 6. Context Query
 
-`meridian context` is the source of truth for filesystem context. It returns `work` and `kb` paths with their sources. Query it and use the literal paths — these are not projected into environment variables. See `meridian context --help` for flags.
+`meridian context` is the CLI for filesystem context. See `meridian context --help` for flags. Context directories are also injected into every agent's system prompt as `MERIDIAN_CONTEXT_*_DIR` env vars — agents can use them directly.
 
-- `meridian context work` — absolute path to the work directory
-- `meridian context kb` — absolute path to the knowledge base directory
-- `meridian context work.archive` — absolute path to the work archive
-- `meridian work current` — absolute path to the work directory (same as `meridian context work` when a work item is active)
+- `meridian context work` — work root directory (`$MERIDIAN_CONTEXT_WORK_DIR`)
+- `meridian context kb` — knowledge base directory (`$MERIDIAN_CONTEXT_KB_DIR`)
+- `meridian context work.archive` — work archive (`$MERIDIAN_CONTEXT_WORK_ARCHIVE_DIR`)
+- `meridian work current` — active work item directory (`$MERIDIAN_WORK_DIR`)
 
 ### Environment Variables
 
 | Variable | Purpose |
 |---|---|
+| `MERIDIAN_CONTEXT_{NAME}_DIR` | Context directories (work, kb, archive, extras from project config) |
+| `MERIDIAN_WORK_DIR` | Active work item directory (session state, not the work root) |
 | `MERIDIAN_STATE_ROOT` | Override `.meridian/` location |
 | `MERIDIAN_DEPTH` | Spawn nesting depth (`>0` means inside a spawn) |
 | `MERIDIAN_CHAT_ID` | Top-level primary session id (same value at every depth) |
