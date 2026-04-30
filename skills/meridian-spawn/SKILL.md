@@ -137,14 +137,14 @@ Drain at a barrier:
 
 When `meridian spawn wait ...` runs through a harness shell tool, do not poll constantly. Keep the same live shell session and poll it sparsely. Prefer long polling intervals such as 10 minutes (`yield_time_ms=600000`) between polls. Do not start a second `meridian spawn wait ...` while the first wait session is still active.
 
-Wait yields every 4 minutes to preserve prompt cache. If spawns are still running, re-run the same command:
+Wait yield timing is harness-aware to preserve prompt cache/session state. Current defaults: unknown 240s, Claude 270s, Codex 900s; mixed wait sets use the shortest effective interval. If spawns are still running, re-run the same command:
 
 ```bash
 # Continue waiting after yield
 meridian spawn wait
 ```
 
-Use `--yield-after-secs` to override the default 4-minute interval.
+Use `--yield-after-secs` to override the harness-aware default for one wait invocation.
 
 ## Checking Status
 
