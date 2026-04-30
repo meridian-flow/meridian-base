@@ -82,7 +82,7 @@ meridian spawn wait   # one notification when ALL complete
 
 Launch all `--bg` spawns, then drain with `meridian spawn wait` at a barrier — before a final response, before starting dependent work, or when local work is exhausted.
 
-When `meridian spawn wait` runs through a harness shell tool, poll sparsely. Wait yield timing is harness-aware: Claude 270s, Codex 900s. Use `--yield-after-secs` to override.
+When `meridian spawn wait` runs through a harness shell tool, poll sparsely. Wait yield timing is harness-aware — meridian detects the parent harness via `MERIDIAN_HARNESS` env and yields before the parent's prompt cache expires. Use `--yield-after-secs` to override. Check `meridian config show` for current per-harness values.
 
 ## Checking Status
 
