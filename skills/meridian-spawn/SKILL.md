@@ -104,7 +104,7 @@ meridian spawn inject p107 --message "Use the existing adapter pattern in src/ad
 
 ## When a Spawn Fails
 
-Read the report via `meridian spawn show SPAWN_ID`. For deeper investigation, see [`../meridian-cli/resources/debugging.md`](../meridian-cli/resources/debugging.md).
+Read the report via `meridian spawn show SPAWN_ID`. For deeper investigation, run `meridian doctor` or check `meridian spawn show` for log paths.
 
 ## Shared Filesystem
 
@@ -135,5 +135,5 @@ meridian spawn -a coder \
 ## Beyond the Basics
 
 For continue/fork, cancel, stats, permission tiers, reports, and dry-run, see [`resources/advanced-commands.md`](resources/advanced-commands.md).
-For troubleshooting strange behavior, see [`../meridian-cli/resources/debugging.md`](../meridian-cli/resources/debugging.md).
-For project defaults (model, agent, permissions, timeouts), see [`../meridian-cli/resources/configuration.md`](../meridian-cli/resources/configuration.md).
+For troubleshooting, run `meridian doctor --help` and `meridian spawn show SPAWN_ID`.
+For project defaults, run `meridian config show` or `meridian config --help`.

@@ -1,6 +1,6 @@
 ---
 name: session-mining
-description: "Use when mining conversation history during dev work — recovering decisions from the top-level primary session, delegating bulk transcript reading to an explorer, or discovering all sessions tied to a work item across interruptions. Assumes the meridian session CLI is already understood (see meridian-cli)."
+description: "Use when mining conversation history during dev work — recovering decisions from the top-level primary session, delegating bulk transcript reading to an explorer, or discovering all sessions tied to a work item across interruptions."
 disable-model-invocation: true
 allow_implicit_invocation: false
 ---
@@ -26,7 +26,7 @@ meridian session log "$MERIDIAN_CHAT_ID" --last 20
 When the question spans long histories or multiple sessions, spawn @explorer for transcript gathering and synthesis. That keeps your context window focused on synthesis and decision-making instead of raw transcript paging.
 
 ```bash
-meridian spawn -a explorer --skills meridian-cli \
+meridian spawn -a explorer \
   -p "Mine session history for work item <id>. Summarize decisions, rejected options, constraints, and unresolved questions with session references."
 ```
 
