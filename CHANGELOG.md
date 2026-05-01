@@ -4,6 +4,8 @@ Be brief. Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Vers
 
 ## [Unreleased]
 
+## [0.1.1] - 2026-05-01
+
 ### Removed
 - `meridian-cli` skill (entire directory with SKILL.md and resources/). CLI operational knowledge now lives in `meridian --help` agent-mode supplements — run `meridian --agent -h` to see. Cross-references in `meridian-spawn` and `session-mining` updated to point at CLI commands instead of skill resources.
 
