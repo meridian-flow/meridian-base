@@ -4,6 +4,8 @@ Be brief. Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Vers
 
 ## [Unreleased]
 
+## [0.1.2] - 2026-05-01
+
 ### Added
 - `meridian-spawn`: Reading Transcripts section — `meridian session log` and `meridian session search` for inspecting spawn and session transcripts.
 
