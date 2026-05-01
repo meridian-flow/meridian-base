@@ -80,7 +80,7 @@ meridian spawn -a coder -p "Implement cache" --bg --desc "cache"
 meridian spawn wait   # one notification when ALL complete
 ```
 
-Launch all `--bg` spawns, then drain with `meridian spawn wait` at a barrier — before a final response, before starting dependent work, or when local work is exhausted.
+Every `--bg` spawn must be drained with `meridian spawn wait` before you respond to the user, start dependent work, or end your turn. Background spawns that aren't waited on are invisible — their results are lost and their failures go unnoticed.
 
 When `meridian spawn wait` runs through a harness shell tool, poll sparsely. Wait yield timing is harness-aware — meridian detects the parent harness via `MERIDIAN_HARNESS` env and yields before the parent's prompt cache expires. Use `--yield-after-secs` to override. Check `meridian config show` for current per-harness values.
 
@@ -105,6 +105,26 @@ meridian spawn inject p107 --message "Use the existing adapter pattern in src/ad
 ## When a Spawn Fails
 
 Read the report via `meridian spawn show SPAWN_ID`. For deeper investigation, run `meridian doctor` or check `meridian spawn show` for log paths.
+
+## Reading Transcripts
+
+Use `meridian session log` to read a session's conversation transcript — spawns, prior sessions, or the current primary session:
+
+```bash
+meridian session log p107                  # last 5 messages of a spawn
+meridian session log p107 --last 20        # more context
+meridian session log p107 -n 0             # entire segment
+meridian session log p107 -c 1             # earlier compaction segment
+meridian session log $MERIDIAN_CHAT_ID     # primary session transcript
+```
+
+`meridian spawn show` gives the structured report; `meridian session log` gives the full reasoning. Reach for session log when the report doesn't explain a failure, when you need to understand decisions made in a prior session, or when resuming work across sessions.
+
+Search for specific content without reading the full transcript:
+
+```bash
+meridian session search "auth middleware" p107
+```
 
 ## Shared Filesystem
 
@@ -137,3 +157,5 @@ meridian spawn -a coder \
 For continue/fork, cancel, stats, permission tiers, reports, and dry-run, see [`resources/advanced-commands.md`](resources/advanced-commands.md).
 For troubleshooting, run `meridian doctor --help` and `meridian spawn show SPAWN_ID`.
 For project defaults, run `meridian config show` or `meridian config --help`.
+
+**If you launched any `--bg` spawns, run `meridian spawn wait` before responding to the user.**

@@ -4,6 +4,12 @@ Be brief. Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Vers
 
 ## [Unreleased]
 
+### Added
+- `meridian-spawn`: Reading Transcripts section — `meridian session log` and `meridian session search` for inspecting spawn and session transcripts.
+
+### Changed
+- `meridian-spawn`: strengthened `spawn wait` enforcement — must-drain language in Parallel Spawns, closing reminder at skill end. Agents were skipping wait despite inline CLI reminders.
+
 ## [0.1.1] - 2026-05-01
 
 ### Removed
