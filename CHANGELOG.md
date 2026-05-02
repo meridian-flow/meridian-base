@@ -4,6 +4,8 @@ Be brief. Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Vers
 
 ## [Unreleased]
 
+## [0.1.3] - 2026-05-02
+
 ### Added
 - `intent-modeling` skill: universal discipline for understanding human intent before acting. Covers overcorrection pattern (directional corrections encoded as absolute prohibitions), helpfulness instinct (pulling toward what feels helpful vs what was asked), and systematic misalignment detection.
 - `llm-writing` skill: universal writing awareness for any artifact produced for humans. Covers behavioral pulls (fluent text without purpose, label-summaries, smoothed uncertainty) and conversational mode leaking into documents.
