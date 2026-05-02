@@ -1,8 +1,7 @@
 ---
 name: session-mining
 description: "Use when mining conversation history during dev work — recovering decisions from the top-level primary session, delegating bulk transcript reading to an explorer, or discovering all sessions tied to a work item across interruptions."
-disable-model-invocation: true
-allow_implicit_invocation: false
+invocation: explicit
 ---
 
 # session-mining

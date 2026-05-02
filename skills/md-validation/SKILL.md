@@ -5,8 +5,7 @@ description: >
   fast validation of links or Mermaid diagrams. Trigger on phrases like
   "check docs", "find broken links", "validate mermaid", "map doc
   structure", or before committing documentation changes.
-disable-model-invocation: true
-allow_implicit_invocation: false
+invocation: explicit
 ---
 
 # md-validation

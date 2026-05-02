@@ -4,6 +4,10 @@ Be brief. Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Vers
 
 ## [Unreleased]
 
+### Changed
+- Skill frontmatter: migrated all skills from legacy `disable-model-invocation`/`allow_implicit_invocation` to canonical `invocation: explicit`.
+- `agent-management`: restructured as directory-based skill with `resources/` (convergence, escalation docs).
+
 ## [0.2.0] - 2026-05-02
 
 ### Added

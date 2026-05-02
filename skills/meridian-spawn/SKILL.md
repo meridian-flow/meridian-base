@@ -4,8 +4,7 @@ description: >
   Use whenever you need to delegate work to another agent, run tasks in
   parallel, check on spawn progress, coordinate multiple agents, or inspect
   spawn outputs. Also use when routing work to a specific model or provider.
-disable-model-invocation: true
-allow_implicit_invocation: false
+invocation: explicit
 ---
 
 # meridian-spawn
