@@ -1,93 +1,54 @@
 ---
 name: kb-conventions
 description: >
-  Conventions for the meridian knowledge base — structure, navigation,
-  writing standards, and the flag protocol for human review. Load when
-  reading from, writing to, or maintaining the KB. Also load when deciding
-  what belongs in the KB vs the work directory.
+  Load when reading from, writing to, or maintaining the KB. Covers
+  structure, layer conventions, and operational tooling.
 disable-model-invocation: true
 allow_implicit_invocation: false
 ---
 
 # KB Conventions
 
-The KB (`meridian context kb`) is a persistent, compounding knowledge base —
-a wiki that accumulates understanding across work sessions. Agents and humans
-read it to orient. Its value grows with every work item if content is
-well-structured and maintained.
+Load `/llm-writing` if it isn't already loaded.
 
-## Structure
+The KB (`meridian context kb`) has five layers:
 
-```
-kb/
-  index.md              # page catalog — links + one-line summaries by domain
-  <domain>/             # topic directories, emerge organically
-    overview.md         # orients on the domain, links to pages
-    <topic>.md          # one coherent concept per doc
-```
+**Sources** — raw material: articles, research, transcripts, data. Immutable.
+The LLM reads from sources but never modifies them.
 
-- `index.md` is the entry point. Read it first to understand what's documented.
-- Domains emerge as the KB grows. A domain earns a directory when it has
-  enough distinct concepts for multiple docs.
+**Decisions** — the reasoning layer. Why a source matters, why the wiki is
+shaped the way it is, what was chosen and rejected. Decisions connect sources
+to knowledge by explaining the interpretation and judgment applied.
 
-## Navigation
+**Wiki** — synthesized knowledge pages. How things work, concepts,
+architecture. The LLM owns this layer: creates pages, updates them, maintains
+cross-references, keeps everything consistent. Shaped by the decisions.
 
-1. Start with `index.md` to find relevant pages
-2. Read domain overviews to understand a topic area
-3. Drill into specific pages for detail
-4. Use `meridian kg graph` to see link topology and find related pages
-5. Search for `> [!FLAG]` to find items needing human attention
+**Log** — what changed in the wiki and why. The audit trail of how the KB
+evolved — what was added, updated, or restructured, and what triggered it.
 
-## Writing Standards
+**Schema** (`AGENTS.md`) — user-defined governance. Tells the LLM how the
+layers are structured, what conventions to follow, and what workflows to use.
+The human and LLM co-evolve this. `CLAUDE.md` references `AGENTS.md` via
+`@AGENTS.md`.
 
-**Diagram first.** A picture is worth a thousand words. Diagrams communicate
-structure, relationships, and flows faster and more concretely than prose.
-Default to mermaid diagrams for anything spatial — module boundaries, data
-flows, state machines, dependency graphs, sequence interactions, system
-topology. Prose supplements diagrams, not the other way around. Tree structures
-work well for hierarchical decomposition. Validate with `meridian mermaid check`.
+## Wiki Structure
 
-**Single responsibility.** Each doc covers one coherent concept. Two unrelated
-topics in one doc → split. Two docs on the same concept → merge or
-cross-reference.
+`index.md` is the entry point — a catalog with links and summaries.
+Directories emerge organically; nest as deep as the content warrants. One
+concept per doc — split when topics diverge, merge when they overlap. Link
+to other docs instead of re-explaining their content. Use mermaid diagrams
+for anything spatial; validate with `meridian mermaid check`.
 
-**Write for humans and agents.** If nobody browses it, nobody maintains it.
-Clear prose with structure beats compressed bullet-point dumps.
+Wiki pages teach how things work — the mechanism, the flows, the edge cases.
+When a fact results from a decision, a brief reference links to the decision
+record. Readers can understand the system from wiki pages alone, and follow
+links to decisions when they need the reasoning.
 
-**Explain the why.** Code shows what. The KB explains why — reasoning,
-constraints, tradeoffs, rejected alternatives.
+## Operations
 
-**Cross-reference, don't re-explain.** Link to other docs instead of
-duplicating their content. Keeps each doc focused and prevents drift.
+Flag content needing human attention with `> [!FLAG] **Needs human review**`.
+Searchable with `rg '\[!FLAG\]'`.
 
-## What Belongs Where
-
-| Content | Location | Rationale |
-|---|---|---|
-| Durable decisions and rationale | KB | Persists across work items |
-| Domain knowledge, patterns, quirks | KB | Compounds over time |
-| Architecture and design rationale | KB | Agents orient from it |
-| Synthesized research findings | KB | Raw research → work dir; lasting insights → KB |
-| Retrospective learnings | KB | Prevents repeating mistakes |
-| Active work artifacts | Work dir | Scoped to current work item |
-| Raw research, exploration | Work dir | Messy and ephemeral |
-| In-progress design/plans | Work dir | Moves to KB when durable |
-
-## Flag Protocol
-
-When content needs human attention — contradictions between sources, ambiguous
-intent, claims that can't be verified, policy questions — flag it inline:
-
-```markdown
-> [!FLAG] **Needs human review** — Brief description of the issue.
-> Flagged YYYY-MM-DD.
-```
-
-Flags are visible when browsing and searchable with `rg '\[!FLAG\]'`. Resolve
-flags by removing the blockquote after the issue is addressed.
-
-## Validation
-
-- `meridian kg check` — broken cross-references (run before committing KB changes)
-- `meridian kg graph` — link topology, orphan pages, hub pages
-- `meridian mermaid check` — diagram validity
+Before committing: `meridian kg check` (broken links), `meridian mermaid check`
+(diagram validity). `meridian kg graph` shows link topology.

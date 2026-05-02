@@ -1,10 +1,9 @@
 ---
 name: meridian-spawn
 description: >
-  Multi-agent coordination via the meridian CLI. Use this skill whenever you
-  need to delegate work to another agent, run tasks in parallel, check on
-  spawn progress, coordinate multiple agents, or inspect spawn outputs. Also
-  use when you want to route work to a specific model or provider.
+  Use whenever you need to delegate work to another agent, run tasks in
+  parallel, check on spawn progress, coordinate multiple agents, or inspect
+  spawn outputs. Also use when routing work to a specific model or provider.
 disable-model-invocation: true
 allow_implicit_invocation: false
 ---

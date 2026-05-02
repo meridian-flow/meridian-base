@@ -1,6 +1,6 @@
 ---
 name: shared-workspace
-description: Shared-repo safety for multi-agent dev environments — orientation on active work, rules for not destroying other actors' uncommitted changes, and staging discipline.
+description: Load when working in a shared repo with other agents or humans. Covers orientation, safety rules for uncommitted changes, and staging discipline.
 disable-model-invocation: true
 allow_implicit_invocation: false
 ---
