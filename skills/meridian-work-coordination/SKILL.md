@@ -42,7 +42,9 @@ meridian work delete old-item --force    # remove even if it has artifacts
 
 ## Artifact Placement
 
-**work** (`$MERIDIAN_CONTEXT_WORK_DIR`) — scoped to current work item. Archived when done.
+**work root** (`$MERIDIAN_CONTEXT_WORK_DIR`) — container holding all work item subdirectories. Do NOT write artifacts here directly.
+
+**active work** (`$MERIDIAN_ACTIVE_WORK_DIR`) — active work item subdirectory. Write work-scoped artifacts here. If unset, no work item is active; create one with `meridian work start`.
 
 **kb** (`$MERIDIAN_CONTEXT_KB_DIR`) — long-lived reference material. Persists across work items.
 
