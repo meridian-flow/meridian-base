@@ -3,3 +3,5 @@
 .agents/
 .meridian/
 meridian.toml
+.claude/
+.codex/
