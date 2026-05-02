@@ -1,8 +1,8 @@
 ---
 name: kb-conventions
 description: >
-  Load when reading from, writing to, or maintaining the KB. Covers
-  structure, layer conventions, and operational tooling.
+  Load when reading from, writing to, or maintaining the KB. Covers layer
+  model, structural conventions, and operational tooling.
 disable-model-invocation: true
 allow_implicit_invocation: false
 ---
@@ -10,6 +10,8 @@ allow_implicit_invocation: false
 # KB Conventions
 
 Load `/llm-writing` if it isn't already loaded.
+
+## Five Layers
 
 The KB (`meridian context kb`) has five layers:
 
@@ -32,18 +34,63 @@ layers are structured, what conventions to follow, and what workflows to use.
 The human and LLM co-evolve this. `CLAUDE.md` references `AGENTS.md` via
 `@AGENTS.md`.
 
-## Wiki Structure
+## Wiki Page Conventions
 
-`index.md` is the entry point — a catalog with links and summaries.
-Directories emerge organically; nest as deep as the content warrants. One
-concept per doc — split when topics diverge, merge when they overlap. Link
-to other docs instead of re-explaining their content. Use mermaid diagrams
-for anything spatial; validate with `meridian mermaid check`.
+### One Concept Per Document
 
-Wiki pages teach how things work — the mechanism, the flows, the edge cases.
-When a fact results from a decision, a brief reference links to the decision
-record. Readers can understand the system from wiki pages alone, and follow
-links to decisions when they need the reasoning.
+Each doc covers one coherent concept — one component, one interaction pattern,
+one decision. When a doc covers two unrelated topics, split it. When two docs
+explain the same concept from different angles, merge or cross-reference.
+
+Name files by what they describe (`token-validation.md`), not when they were
+written (`auth-redesign-notes.md`).
+
+### Hierarchical Organization
+
+`index.md` is the entry point — a catalog with links and one-line summaries,
+organized by domain. Directories emerge organically as a domain accumulates
+enough distinct concepts. Nest as deep as the content warrants.
+
+```
+index.md
+<domain>/
+  overview.md
+  <topic>.md
+  <sub-domain>/
+    <topic>.md
+```
+
+The overview at each level orients the reader: what exists here, how pieces
+relate, where to go deeper.
+
+### Linking
+
+Link to related docs using relative paths. Cross-reference instead of
+re-explaining — each doc stays focused and there's one source of truth per
+concept. When a fact results from a decision, link to the decision record.
+Readers understand the system from wiki pages alone, following links to
+decisions when they need the reasoning.
+
+### Readability
+
+Write docs that work in isolation:
+
+- **Self-contained** — enough inline context that a reader doesn't need three
+  other docs first
+- **Scannable** — headers, bullet lists, tables. Bold key terms on first use.
+- **Concrete** — file paths, function names, type signatures over vague
+  references
+- **State invariants explicitly** — agents follow what's written
+
+### Style
+
+Wiki pages teach how things work — mechanism, flows, edge cases. Capture what
+code can't easily tell you: component relationships, dependency directions,
+data flows, and why the system is shaped this way.
+
+Use mermaid diagrams for anything spatial — component relationships, data
+flows, state machines. Tables for comparisons. Reference source locations
+rather than pasting code.
 
 ## Operations
 

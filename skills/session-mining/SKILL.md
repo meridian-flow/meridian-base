@@ -23,14 +23,14 @@ meridian session log "$MERIDIAN_CHAT_ID" --last 20
 
 ## Delegate Bulk Reading, Don't Inline It
 
-When the question spans long histories or multiple sessions, spawn @explorer for transcript gathering and synthesis. That keeps your context window focused on synthesis and decision-making instead of raw transcript paging.
+When the question spans long histories or multiple sessions, spawn @session-explorer for transcript mining and synthesis. That keeps your context window focused on decisions instead of raw transcript paging.
 
 ```bash
-meridian spawn -a explorer \
+meridian spawn -a session-explorer \
   -p "Mine session history for work item <id>. Summarize decisions, rejected options, constraints, and unresolved questions with session references."
 ```
 
-If you are the @explorer, mine directly rather than spawning recursively.
+If you are the @session-explorer, mine directly rather than spawning recursively.
 
 ## Discover Sessions Per Work Item
 

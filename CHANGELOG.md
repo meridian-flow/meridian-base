@@ -4,6 +4,17 @@ Be brief. Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Vers
 
 ## [Unreleased]
 
+### Added
+- `@session-explorer` agent: interpretive conversation mining — decisions, rejected alternatives, intent, constraints. Sonnet model for pragmatic interpretation. Splits from `@explorer`, which stays cheap/codebase-only.
+
+### Changed
+- `@explorer`: narrowed to codebase-only. Dropped `meridian session *`, `meridian work show *`, `meridian spawn show *` tools. Description routes to `@session-explorer` for conversation history.
+- `@kb-writer`: added `llm-writing` and `intent-modeling` — writes prose for humans, mines conversation for decisions.
+- `@kb-writer`: trimmed body. Structural conventions (SRP, hierarchy, linking, readability) moved to `kb-conventions` skill.
+- `@kb-maintainer`: trimmed body. Same structural conventions consolidated into `kb-conventions`.
+- `kb-conventions`: expanded with wiki page conventions — SRP, hierarchical organization, linking discipline, readability, style. Single source of truth for structural standards; both kb-writer and kb-maintainer reference it.
+- `session-mining`: delegation target `@explorer` → `@session-explorer` for transcript mining.
+
 ## [0.1.3] - 2026-05-02
 
 ### Added
