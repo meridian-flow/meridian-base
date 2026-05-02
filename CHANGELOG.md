@@ -4,6 +4,8 @@ Be brief. Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Vers
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-05-02
+
 ### Added
 - `@session-explorer` agent: interpretive conversation mining — decisions, rejected alternatives, intent, constraints. Sonnet model for pragmatic interpretation. Splits from `@explorer`, which stays cheap/codebase-only.
 
