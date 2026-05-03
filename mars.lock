@@ -5,13 +5,13 @@ path = "."
 
 [dependencies.meridian-base]
 url = "https://github.com/meridian-flow/meridian-base"
-version = "v0.1.3"
-commit = "0b191758f42bb15bd6059f03b4750444864843b9"
+version = "v0.2.1"
+commit = "37626e7a686552625225ab5323d91c48a6fc55a9"
 
 [dependencies.meridian-prompter]
 url = "https://github.com/meridian-flow/meridian-prompter"
-version = "v0.1.3"
-commit = "48594da6c89211c5a2367698d97d17d030780645"
+version = "v0.1.5"
+commit = "636e04c6cead0d4797370654a025ca17fd959478"
 
 [items."agent/explorer"]
 source = "_self"
@@ -66,13 +66,13 @@ installed_checksum = "sha256:72f0c5060b99af974f19d29d615af9065d49fef34a132b3e1b2
 [items."agent/prompt-dev"]
 source = "meridian-prompter"
 kind = "agent"
-version = "v0.1.3"
-source_checksum = "sha256:195c56e742002284075a2d3b7ceba337213f7941e30032fd50bc416e6c16986e"
+version = "v0.1.5"
+source_checksum = "sha256:b8585f2fe2aaf7355ebfe3489905e4e3352b860605f47f035135d48166548d75"
 
 [[items."agent/prompt-dev".outputs]]
 target_root = ".mars"
 dest_path = "agents/prompt-dev.md"
-installed_checksum = "sha256:195c56e742002284075a2d3b7ceba337213f7941e30032fd50bc416e6c16986e"
+installed_checksum = "sha256:b8585f2fe2aaf7355ebfe3489905e4e3352b860605f47f035135d48166548d75"
 
 [items."agent/prompt-reviewer"]
 source = "meridian-prompter"
@@ -131,13 +131,13 @@ installed_checksum = "sha256:a474014b66619b90255ee25761afbd8a9ab1c179e458ed5231a
 [items."skill/agent-artifacts"]
 source = "meridian-prompter"
 kind = "skill"
-version = "v0.1.3"
-source_checksum = "sha256:60abafa855602da379ae616d74680c35b2a78ad600f3c0683980a9942935a91a"
+version = "v0.1.5"
+source_checksum = "sha256:5d1b09dc0733a172d1d9e89692bc9f8960805b196014fc550ecdf07128de9ae4"
 
 [[items."skill/agent-artifacts".outputs]]
 target_root = ".mars"
 dest_path = "skills/agent-artifacts"
-installed_checksum = "sha256:60abafa855602da379ae616d74680c35b2a78ad600f3c0683980a9942935a91a"
+installed_checksum = "sha256:5d1b09dc0733a172d1d9e89692bc9f8960805b196014fc550ecdf07128de9ae4"
 
 [items."skill/agent-management"]
 source = "_self"
@@ -232,24 +232,24 @@ installed_checksum = "sha256:5d3375b1f61231346265dcdd648f81391a4472f4df23d7c7529
 [items."skill/prompt-principles"]
 source = "meridian-prompter"
 kind = "skill"
-version = "v0.1.3"
-source_checksum = "sha256:135f6088c4d6117fb036a9df8db88893910fd9e6ef233bf3ac7cf52af4528e8f"
+version = "v0.1.5"
+source_checksum = "sha256:868e9f2b1dba146b68a836775b4af46cbbf3dedbb7f8d4005b4148322999a735"
 
 [[items."skill/prompt-principles".outputs]]
 target_root = ".mars"
 dest_path = "skills/prompt-principles"
-installed_checksum = "sha256:135f6088c4d6117fb036a9df8db88893910fd9e6ef233bf3ac7cf52af4528e8f"
+installed_checksum = "sha256:868e9f2b1dba146b68a836775b4af46cbbf3dedbb7f8d4005b4148322999a735"
 
 [items."skill/prompt-review"]
 source = "meridian-prompter"
 kind = "skill"
-version = "v0.1.3"
-source_checksum = "sha256:da72bddeca4736be2efc3f2f15ca638a5c3994533f86228eda78ceaa4382eb8c"
+version = "v0.1.5"
+source_checksum = "sha256:2ba7b8490ad8d9ad693cfc997d2a1fb3c7743b99a36ce9829ea1823bbaa5394d"
 
 [[items."skill/prompt-review".outputs]]
 target_root = ".mars"
 dest_path = "skills/prompt-review"
-installed_checksum = "sha256:da72bddeca4736be2efc3f2f15ca638a5c3994533f86228eda78ceaa4382eb8c"
+installed_checksum = "sha256:2ba7b8490ad8d9ad693cfc997d2a1fb3c7743b99a36ce9829ea1823bbaa5394d"
 
 [items."skill/session-mining"]
 source = "_self"
@@ -274,10 +274,10 @@ installed_checksum = "sha256:467ec3a0612f28b99f849306572b7da94bbbaf7c4b3ed04f824
 [items."skill/skill-artifacts"]
 source = "meridian-prompter"
 kind = "skill"
-version = "v0.1.3"
-source_checksum = "sha256:9e2ec86c49310227931f5f49621be29d47250018a0db956e1655324551dfe5b5"
+version = "v0.1.5"
+source_checksum = "sha256:95149c7779ad6368b0361110921781994807d5689152a6539eaa2c4e520672ce"
 
 [[items."skill/skill-artifacts".outputs]]
 target_root = ".mars"
 dest_path = "skills/skill-artifacts"
-installed_checksum = "sha256:9e2ec86c49310227931f5f49621be29d47250018a0db956e1655324551dfe5b5"
+installed_checksum = "sha256:95149c7779ad6368b0361110921781994807d5689152a6539eaa2c4e520672ce"
