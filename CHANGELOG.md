@@ -6,6 +6,9 @@ Be brief. Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Vers
 
 ## [0.2.2] - 2026-05-03
 
+### Added
+- Model catalog: `opus`, `gpt`, `sonnet`, `codex`, `gptmini`, `gpt55`, `opus47` aliases defined here as single source of truth. Downstream packages (meridian-dev-workflow, meridian-prompter) no longer duplicate these — eliminates "model alias defined by both" warnings during sync.
+
 ## [0.2.1] - 2026-05-02
 
 ### Changed
