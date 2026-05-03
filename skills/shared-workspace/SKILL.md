@@ -1,7 +1,7 @@
 ---
 name: shared-workspace
 description: Load when working in a shared repo with other agents or humans. Covers orientation, safety rules for uncommitted changes, and staging discipline.
-invocation: explicit
+model-invocable: false
 ---
 
 # Shared Workspace

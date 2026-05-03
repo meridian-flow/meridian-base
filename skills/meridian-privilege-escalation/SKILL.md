@@ -1,7 +1,6 @@
 ---
 name: meridian-privilege-escalation
 description: Use when a spawned agent fails because of sandbox restrictions, missing tools, harness limitations, or insufficient permissions, and you need to change the spawn configuration to unblock it.
-invocation: explicit
 ---
 
 # Privilege Escalation

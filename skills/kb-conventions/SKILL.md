@@ -3,7 +3,7 @@ name: kb-conventions
 description: >
   Load when reading from, writing to, or maintaining the KB. Covers layer
   model, structural conventions, and operational tooling.
-invocation: explicit
+model-invocable: false
 ---
 
 # KB Conventions

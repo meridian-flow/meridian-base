@@ -4,7 +4,7 @@ description: >
   Load when you coordinate work across multiple spawns rather than
   implementing directly. Delegation discipline, convergence loops,
   escalation, artifact persistence.
-invocation: explicit
+model-invocable: false
 ---
 
 # Agent Management

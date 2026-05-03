@@ -1,7 +1,7 @@
 ---
 name: meridian-work-coordination
 description: Use whenever you need to create, switch, update, or complete a work item, or decide where work-scoped notes versus broader shared docs belong.
-invocation: explicit
+model-invocable: false
 ---
 
 # Work Coordination
