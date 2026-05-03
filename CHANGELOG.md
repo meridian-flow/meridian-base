@@ -4,6 +4,8 @@ Be brief. Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Vers
 
 ## [Unreleased]
 
+## [0.2.4] - 2026-05-03
+
 ### Changed
 - Skill schema: migrated from `invocation: explicit` to `model-invocable: false` / `user-invocable: false`. Some skills previously marked explicit are now model-discoverable.
 
