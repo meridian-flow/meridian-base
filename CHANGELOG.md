@@ -4,6 +4,8 @@ Be brief. Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Vers
 
 ## [Unreleased]
 
+## [0.2.6] - 2026-05-04
+
 ### Changed
 - agent-management: handoff prompts must carry user's full intent — agents own their deliverable shape, callers state the problem
 
