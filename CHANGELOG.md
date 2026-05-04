@@ -4,6 +4,9 @@ Be brief. Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Vers
 
 ## [Unreleased]
 
+### Added
+- Model alias: `opus46` pinned to `claude-opus-4-6`.
+
 ## [0.2.4] - 2026-05-03
 
 ### Changed

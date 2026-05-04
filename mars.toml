@@ -18,6 +18,13 @@ default_effort = "low"
 model = "gpt-5.5"
 provider = "openai"
 
+[models.opus46]
+harness = "claude"
+description = "Opus 4.6 — best for orchestration, frontend, UI/UX, and creative work. Strong instruction-following."
+default_effort = "high"
+model = "claude-opus-4-6"
+provider = "anthropic"
+
 [models.opus47]
 harness = "claude"
 description = "Opus 4.7 — strongest benchmarks, best agentic coding. Literal instruction-following breaks complex prompts. Long-context degrades above 100k. 35% more expensive via tokenizer. Needs prompt migration from 4.6."
