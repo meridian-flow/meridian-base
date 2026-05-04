@@ -19,9 +19,13 @@ that's why delegation exists.
 Agent tools. Spawns persist reports, support model routing, and remain
 inspectable after compaction.
 
-**Match prompt scope to agent scope.** Before spawning, consider what the
-agent is built to do. Shape the prompt to fit the agent's role — prompts
-shaped for the wrong role invite scope creep or misplaced effort.
+**Carry the user's full intent into every handoff.** The spawned agent
+works from the prompt alone — whatever you leave out is gone. Before
+writing a spawn prompt, think hard about what the user actually wants
+accomplished. State the problem and the outcome they need. The agent's own
+profile and loaded skills define its deliverable shape — a design-lead
+asked to "audit startup architecture" should produce architecture, not just
+findings, because that's what design-leads deliver.
 
 ## Convergence
 
